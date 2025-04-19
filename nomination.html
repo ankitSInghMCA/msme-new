@@ -15,22 +15,9 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <!-- Custom Styles -->
   <style>
-    :root {
-      --primary-color: #4361ee;
-      --secondary-color: #3f37c9;
-      --success-color: #4bb543;
-      --light-bg: #f8f9fa;
-      --border-radius: 10px;
-    }
     
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f2f5;
-      color: #333;
-    }
-    
-    .page-header {
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    #new-msme-form .page-header {
+      background: linear-gradient(135deg, #4361ee,  #3f37c9);
       padding: 60px 0;
       color: white;
       margin-bottom: 40px;
@@ -38,28 +25,28 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
     
-    .page-header h1 {
+    #new-msme-form .page-header h1 {
       font-weight: 700;
       margin-bottom: 15px;
     }
     
-    .page-header p {
+    #new-msme-form .page-header p {
       opacity: 0.9;
       font-size: 1.2rem;
       max-width: 700px;
       margin: 0 auto;
     }
     
-    .form-card {
+    #new-msme-form .form-card {
       background-color: white;
-      border-radius: var(--border-radius);
+      border-radius: 10px;
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
       margin-bottom: 40px;
       overflow: hidden;
     }
     
-    .form-card-header {
-      background-color: var(--primary-color);
+    #new-msme-form .form-card-header {
+      background-color: #4361ee;
       color: white;
       padding: 20px;
       font-weight: 600;
@@ -68,7 +55,7 @@
       align-items: center;
     }
     
-    .form-card-header .icon {
+    #new-msme-form .form-card-header .icon {
       margin-right: 10px;
       background-color: rgba(255, 255, 255, 0.2);
       width: 32px;
@@ -79,21 +66,21 @@
       border-radius: 50%;
     }
     
-    .form-card-body {
+    #new-msme-form .form-card-body {
       padding: 25px;
     }
     
-    .form-section {
+    #new-msme-form  .form-section {
       margin-bottom: 30px;
     }
     
-    .form-section:last-child {
+    #new-msme-form .form-section:last-child {
       margin-bottom: 0;
     }
     
-    .form-section-title {
+    #new-msme-form .form-section-title {
       font-weight: 600;
-      color: var(--primary-color);
+      color: #4361ee;
       margin-bottom: 20px;
       padding-bottom: 10px;
       border-bottom: 1px solid #eee;
@@ -101,7 +88,7 @@
       align-items: center;
     }
     
-    .form-section-title .icon {
+    #new-msme-form .form-section-title .icon {
       margin-right: 10px;
       background-color: rgba(67, 97, 238, 0.1);
       width: 32px;
@@ -112,30 +99,30 @@
       border-radius: 50%;
     }
     
-    .form-label {
+    #new-msme-form .form-label {
       font-weight: 500;
       margin-bottom: 8px;
       color: #555;
     }
     
-    .form-control, .form-select {
+    #new-msme-form .form-control, .form-select {
       border-radius: 8px;
       padding: 10px 15px;
       border: 1px solid #ddd;
       transition: border-color 0.3s, box-shadow 0.3s;
     }
     
-    .form-control:focus, .form-select:focus {
-      border-color: var(--primary-color);
+    #new-msme-form .form-control:focus, .form-select:focus {
+      border-color: #4361ee;
       box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
     }
     
-    .form-check-input:checked {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
+    #new-msme-form .form-check-input:checked {
+      background-color: #4361ee;
+      border-color: #4361ee;
     }
     
-    .form-table {
+    #new-msme-form  .form-table {
       border-collapse: separate;
       border-spacing: 0;
       width: 100%;
@@ -144,7 +131,7 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
     }
     
-    .form-table th {
+    #new-msme-form  .form-table th {
       background-color: rgba(67, 97, 238, 0.1);
       padding: 12px 15px;
       font-weight: 600;
@@ -152,23 +139,23 @@
       text-align: left;
     }
     
-    .form-table td {
+    #new-msme-form .form-table td {
       padding: 12px 15px;
       border-top: 1px solid #eee;
     }
     
-    .form-table tr:nth-child(even) {
+    #new-msme-form  .form-table tr:nth-child(even) {
       background-color: #f9f9f9;
     }
     
-    .form-footer {
+    #new-msme-form   .form-footer {
       background-color: #f8f9fa;
       padding: 20px;
       border-top: 1px solid #eee;
     }
     
-    .btn-primary {
-      background-color: var(--primary-color);
+    #new-msme-form  .btn-primary {
+      background-color: #4361ee;
       border: none;
       border-radius: 8px;
       padding: 10px 24px;
@@ -176,29 +163,29 @@
       transition: all 0.3s;
     }
     
-    .btn-primary:hover {
-      background-color: var(--secondary-color);
+    #new-msme-form  .btn-primary:hover {
+      background-color:  #3f37c9;
       transform: translateY(-2px);
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
     
-    .btn-outline-primary {
-      color: var(--primary-color);
-      border-color: var(--primary-color);
+    #new-msme-form  .btn-outline-primary {
+      color: #4361ee;
+      border-color: #4361ee;
       border-radius: 8px;
       padding: 10px 24px;
       font-weight: 600;
       transition: all 0.3s;
     }
     
-    .btn-outline-primary:hover {
-      background-color: var(--primary-color);
+    #new-msme-form  .btn-outline-primary:hover {
+      background-color: #4361ee;
       color: white;
       transform: translateY(-2px);
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
     
-    .signature-box {
+    #new-msme-form  .signature-box {
       border: 2px dashed #ddd;
       border-radius: 8px;
       height: 150px;
@@ -211,29 +198,29 @@
       margin-bottom: 15px;
     }
     
-    .signature-box:hover {
-      border-color: var(--primary-color);
+    #new-msme-form  .signature-box:hover {
+      border-color: #4361ee;
       background-color: rgba(67, 97, 238, 0.05);
     }
     
-    .signature-box.has-signature {
+    #new-msme-form  .signature-box.has-signature {
       border-style: solid;
       background-color: white;
     }
     
-    .form-step-indicator {
+    #new-msme-form   .form-step-indicator {
       display: flex;
       justify-content: space-between;
       margin-bottom: 40px;
     }
     
-    .step-item {
+    #new-msme-form .step-item {
       flex: 1;
       text-align: center;
       position: relative;
     }
     
-    .step-item:not(:last-child):after {
+    #new-msme-form .step-item:not(:last-child):after {
       content: '';
       position: absolute;
       top: 24px;
@@ -244,7 +231,7 @@
       z-index: 1;
     }
     
-    .step-number {
+    #new-msme-form  .step-number {
       width: 50px;
       height: 50px;
       border-radius: 50%;
@@ -260,33 +247,33 @@
       z-index: 2;
     }
     
-    .step-title {
+    #new-msme-form .step-title {
       font-weight: 500;
       color: #777;
     }
     
-    .step-item.active .step-number {
-      background-color: var(--primary-color);
+    #new-msme-form  .step-item.active .step-number {
+      background-color: #4361ee;
       color: white;
-      border-color: var(--primary-color);
+      border-color: #4361ee;
     }
     
-    .step-item.active .step-title {
-      color: var(--primary-color);
+    #new-msme-form   .step-item.active .step-title {
+      color: #4361ee;
       font-weight: 600;
     }
     
-    .step-item.completed .step-number {
-      background-color: var(--success-color);
+    #new-msme-form   .step-item.completed .step-number {
+      background-color:  #4bb543;
       color: white;
-      border-color: var(--success-color);
+      border-color:  #4bb543;
     }
     
-    .step-item.completed:not(:last-child):after {
-      background-color: var(--success-color);
+    #new-msme-form   .step-item.completed:not(:last-child):after {
+      background-color:  #4bb543;
     }
     
-    .custom-file-upload {
+    #new-msme-form   .custom-file-upload {
       display: inline-block;
       padding: 10px 15px;
       cursor: pointer;
@@ -296,15 +283,15 @@
       transition: all 0.3s;
     }
     
-    .custom-file-upload:hover {
+    #new-msme-form  .custom-file-upload:hover {
       background-color: #e9ecef;
     }
     
-    .custom-file-upload i {
+    #new-msme-form  .custom-file-upload i {
       margin-right: 5px;
     }
     
-    .file-info {
+    #new-msme-form   .file-info {
       display: flex;
       align-items: center;
       margin-top: 10px;
@@ -313,44 +300,44 @@
       background-color: #f0f2f5;
     }
     
-    .file-info i {
+    #new-msme-form  .file-info i {
       margin-right: 10px;
       font-size: 1.2rem;
     }
     
-    .file-name {
+    #new-msme-form   .file-name {
       font-weight: 500;
       flex: 1;
     }
     
-    .file-remove {
+    #new-msme-form   .file-remove {
       color: #dc3545;
       cursor: pointer;
     }
     
-    .error-feedback {
+    #new-msme-form   .error-feedback {
       color: #dc3545;
       font-size: 0.85rem;
       margin-top: 5px;
       display: none;
     }
     
-    .is-invalid ~ .error-feedback {
+    #new-msme-form   .is-invalid ~ .error-feedback {
       display: block;
     }
     
     @media (max-width: 767.98px) {
-      .step-item:not(:last-child):after {
+      #new-msme-form    .step-item:not(:last-child):after {
         width: 60%;
       }
       
-      .step-number {
+      #new-msme-form    .step-number {
         width: 40px;
         height: 40px;
         font-size: 0.9rem;
       }
       
-      .step-title {
+      #new-msme-form  .step-title {
         font-size: 0.8rem;
       }
     }
@@ -358,7 +345,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="new-msme-form">
         <!-- Form Steps Indicator -->
         <div class="form-step-indicator d-none d-md-flex">
           <div class="step-item active">
@@ -849,7 +836,7 @@
             </div>
           </div>
         </form>
-      </div>
+    </div>
     
       <!-- JavaScript to make the form work -->
       <script>

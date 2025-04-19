@@ -12,7 +12,9 @@
 
 
     <title>Express Awards for Women Entrepreneurs (AWE) | The Financial Express</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         @-ms-viewport {
             width: device-width
@@ -2444,23 +2446,245 @@
         }
     </style>
 
+    <style>
+        :root {
+            --primary-color: #1d0f3b;
+            --secondary-color: #3f37c9;
+            --success-color: #4bb543;
+            --light-bg: #f8f9fa;
+            --border-radius: 10px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 60px 0;
+            color: white;
+            margin-bottom: 40px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-section h1 {
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .hero-section p {
+            opacity: 0.9;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-button {
+            background-color: white;
+            color: var(--primary-color);
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 12px 28px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            background-color: white;
+            color: var(--secondary-color);
+        }
+
+        .modal-content {
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 15px 15px 0 0;
+            padding: 20px 25px;
+        }
+
+        .modal-title {
+            font-weight: 600;
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+
+        .modal-footer {
+            border-top: 1px solid #eee;
+            padding: 20px 25px;
+        }
+
+        .form-section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-header {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-header .icon {
+            margin-right: 10px;
+            background-color: rgba(67, 97, 238, 0.1);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 8px;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        /* .form-control:focus, .form-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    }
+    
+    .form-check-input:checked {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    } */
+
+        .btn-submit {
+            background-color: var(--success-color);
+            border: none;
+            border-radius: 8px;
+            padding: 10px 24px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #3da037;
+            transform: translateY(-2px);
+        }
+
+        .error-feedback {
+            color: #dc3545;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .is-invalid~.error-feedback {
+            display: block;
+        }
+
+        .form-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .progress-container {
+            position: relative;
+            height: 5px;
+            background-color: #eee;
+            border-radius: 3px;
+            margin-bottom: 25px;
+        }
+
+        #results {
+            display: none;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-top: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .result-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .result-success {
+            color: var(--success-color);
+        }
+
+        .result-pending {
+            color: #ffc107;
+        }
+
+        .result-ineligible {
+            color: #dc3545;
+        }
+
+        .animate-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #eligibilityModal .form-check-input:focus {
+            box-shadow: none !important;
+        }
+
+        #eligibilityModal .form-check-input:checked {
+            background-color: #1d0f3b !important;
+            border-color: #1d0f3b !important;
+        }
+
+        @media(max-width:576px) {
+            .new-flex-sm-wrap {
+                flex-direction: column;
+            }
+        }
+    </style>
+
+
+<!-- nomination form -modal -->
+
 <style>
-    :root {
-      --primary-color: #1d0f3b;
-      --secondary-color: #3f37c9;
-      --success-color: #4bb543;
-      --light-bg: #f8f9fa;
-      --border-radius: 10px;
-    }
     
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f2f5;
-      color: #333;
-    }
-    
-    .hero-section {
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    #new-msme-form .page-header {
+      background: linear-gradient(135deg, #4361ee,  #3f37c9);
       padding: 60px 0;
       color: white;
       margin-bottom: 40px;
@@ -2468,80 +2692,70 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
     
-    .hero-section h1 {
+    #new-msme-form .page-header h1 {
       font-weight: 700;
       margin-bottom: 15px;
     }
     
-    .hero-section p {
+    #new-msme-form .page-header p {
       opacity: 0.9;
       font-size: 1.2rem;
       max-width: 700px;
       margin: 0 auto;
     }
     
-    .cta-button {
+    #new-msme-form .form-card {
       background-color: white;
-      color: var(--primary-color);
-      border: none;
-      border-radius: var(--border-radius);
-      padding: 12px 28px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+      overflow: hidden;
     }
     
-    .cta-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-      background-color: white;
-      color: var(--secondary-color);
-    }
-    
-    .modal-content {
-      border-radius: 15px;
-      border: none;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-    
-    .modal-header {
-      background-color: var(--primary-color);
+    #new-msme-form .form-card-header {
+      background-color: #4361ee;
       color: white;
-      border-radius: 15px 15px 0 0;
-      padding: 20px 25px;
-    }
-    
-    .modal-title {
-      font-weight: 600;
-    }
-    
-    .modal-body {
-      padding: 25px;
-    }
-    
-    .modal-footer {
-      border-top: 1px solid #eee;
-      padding: 20px 25px;
-    }
-    
-    .form-section {
-      background-color: white;
-      border-radius: var(--border-radius);
       padding: 20px;
-      margin-bottom: 25px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-    }
-    
-    .section-header {
       font-weight: 600;
-      color: var(--primary-color);
-      margin-bottom: 20px;
+      font-size: 1.1rem;
       display: flex;
       align-items: center;
     }
     
-    .section-header .icon {
+    #new-msme-form .form-card-header .icon {
+      margin-right: 10px;
+      background-color: rgba(255, 255, 255, 0.2);
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    
+    #new-msme-form .form-card-body {
+      padding: 25px;
+    }
+    
+    #new-msme-form  .form-section {
+      margin-bottom: 30px;
+    }
+    
+    #new-msme-form .form-section:last-child {
+      margin-bottom: 0;
+    }
+    
+    #new-msme-form .form-section-title {
+      font-weight: 600;
+      color: #4361ee;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+    }
+    
+    #new-msme-form .form-section-title .icon {
       margin-right: 10px;
       background-color: rgba(67, 97, 238, 0.1);
       width: 32px;
@@ -2552,31 +2766,63 @@
       border-radius: 50%;
     }
     
-    .form-label {
+    #new-msme-form .form-label {
       font-weight: 500;
       margin-bottom: 8px;
       color: #555;
     }
     
-    .form-control, .form-select {
+    #new-msme-form .form-control, .form-select {
       border-radius: 8px;
       padding: 10px 15px;
       border: 1px solid #ddd;
       transition: border-color 0.3s, box-shadow 0.3s;
     }
     
-    /* .form-control:focus, .form-select:focus {
-      border-color: var(--primary-color);
+    #new-msme-form .form-control:focus, .form-select:focus {
+      border-color: #4361ee;
       box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
     }
     
-    .form-check-input:checked {
-      background-color: var(--primary-color);
-      border-color: var(--primary-color);
-    } */
+    #new-msme-form .form-check-input:checked {
+      background-color: #4361ee;
+      border-color: #4361ee;
+    }
     
-    .btn-submit {
-      background-color: var(--success-color);
+    #new-msme-form  .form-table {
+      border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+    
+    #new-msme-form  .form-table th {
+      background-color: rgba(67, 97, 238, 0.1);
+      padding: 12px 15px;
+      font-weight: 600;
+      color: #444;
+      text-align: left;
+    }
+    
+    #new-msme-form .form-table td {
+      padding: 12px 15px;
+      border-top: 1px solid #eee;
+    }
+    
+    #new-msme-form  .form-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    
+    #new-msme-form   .form-footer {
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-top: 1px solid #eee;
+    }
+    
+    #new-msme-form  .btn-primary {
+      background-color: #4361ee;
       border: none;
       border-radius: 8px;
       padding: 10px 24px;
@@ -2584,86 +2830,185 @@
       transition: all 0.3s;
     }
     
-    .btn-submit:hover {
-      background-color: #3da037;
+    #new-msme-form  .btn-primary:hover {
+      background-color:  #3f37c9;
       transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
     
-    .error-feedback {
+    #new-msme-form  .btn-outline-primary {
+      color: #4361ee;
+      border-color: #4361ee;
+      border-radius: 8px;
+      padding: 10px 24px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    #new-msme-form  .btn-outline-primary:hover {
+      background-color: #4361ee;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+    
+    #new-msme-form  .signature-box {
+      border: 2px dashed #ddd;
+      border-radius: 8px;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      background-color: #f9f9f9;
+      margin-bottom: 15px;
+    }
+    
+    #new-msme-form  .signature-box:hover {
+      border-color: #4361ee;
+      background-color: rgba(67, 97, 238, 0.05);
+    }
+    
+    #new-msme-form  .signature-box.has-signature {
+      border-style: solid;
+      background-color: white;
+    }
+    
+    #new-msme-form   .form-step-indicator {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+    
+    #new-msme-form .step-item {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+    
+    #new-msme-form .step-item:not(:last-child):after {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: 60%;
+      width: 80%;
+      height: 2px;
+      background-color: #ddd;
+      z-index: 1;
+    }
+    
+    #new-msme-form  .step-number {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #f0f2f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      font-weight: 600;
+      border: 2px solid #ddd;
+      color: #777;
+      position: relative;
+      z-index: 2;
+    }
+    
+    #new-msme-form .step-title {
+      font-weight: 500;
+      color: #777;
+    }
+    
+    #new-msme-form  .step-item.active .step-number {
+      background-color: #4361ee;
+      color: white;
+      border-color: #4361ee;
+    }
+    
+    #new-msme-form   .step-item.active .step-title {
+      color: #4361ee;
+      font-weight: 600;
+    }
+    
+    #new-msme-form   .step-item.completed .step-number {
+      background-color:  #4bb543;
+      color: white;
+      border-color:  #4bb543;
+    }
+    
+    #new-msme-form   .step-item.completed:not(:last-child):after {
+      background-color:  #4bb543;
+    }
+    
+    #new-msme-form   .custom-file-upload {
+      display: inline-block;
+      padding: 10px 15px;
+      cursor: pointer;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f8f9fa;
+      transition: all 0.3s;
+    }
+    
+    #new-msme-form  .custom-file-upload:hover {
+      background-color: #e9ecef;
+    }
+    
+    #new-msme-form  .custom-file-upload i {
+      margin-right: 5px;
+    }
+    
+    #new-msme-form   .file-info {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      background-color: #f0f2f5;
+    }
+    
+    #new-msme-form  .file-info i {
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+    
+    #new-msme-form   .file-name {
+      font-weight: 500;
+      flex: 1;
+    }
+    
+    #new-msme-form   .file-remove {
+      color: #dc3545;
+      cursor: pointer;
+    }
+    
+    #new-msme-form   .error-feedback {
       color: #dc3545;
       font-size: 0.85rem;
       margin-top: 5px;
       display: none;
     }
     
-    .is-invalid ~ .error-feedback {
+    #new-msme-form   .is-invalid ~ .error-feedback {
       display: block;
     }
     
-    .form-progress {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 5px;
-      background-color: var(--primary-color);
-      transition: width 0.3s;
+    @media (max-width: 767.98px) {
+      #new-msme-form    .step-item:not(:last-child):after {
+        width: 60%;
+      }
+      
+      #new-msme-form    .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+      }
+      
+      #new-msme-form  .step-title {
+        font-size: 0.8rem;
+      }
     }
-    
-    .progress-container {
-      position: relative;
-      height: 5px;
-      background-color: #eee;
-      border-radius: 3px;
-      margin-bottom: 25px;
-    }
-    
-    #results {
-      display: none;
-      background-color: #f8f9fa;
-      border-radius: var(--border-radius);
-      padding: 25px;
-      margin-top: 25px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    }
-    
-    .result-icon {
-      font-size: 3rem;
-      margin-bottom: 15px;
-    }
-    
-    .result-success {
-      color: var(--success-color);
-    }
-    
-    .result-pending {
-      color: #ffc107;
-    }
-    
-    .result-ineligible {
-      color: #dc3545;
-    }
-    
-    .animate-in {
-      animation: fadeIn 0.5s ease-out;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    #eligibilityModal .form-check-input:focus{
-        box-shadow: none !important;
-    }
-    #eligibilityModal .form-check-input:checked {
-    background-color: #1d0f3b !important;
-    border-color:#1d0f3b  !important;
-}
-@media(max-width:576px){
-    .new-flex-sm-wrap{
-        flex-direction: column;
-    }
-}
-  </style>
+</style>
 
     <!--
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -6231,17 +6576,19 @@
                         <div class="page-center withCarousel">
                             <div class="row align-items-center">
                                 <div class="leftSection col-lg-6 d-flex justify-content-center">
-                                    <img src="/zzzasset/img/MSME Ratna Lending Home icon-01 (1) (1).png" style="width: 100%; max-width: 100%;" alt="">
+                                    <img src="/zzzasset/img/MSME Ratna Lending Home icon-01 (1) (1).png"
+                                        style="width: 100%; max-width: 100%;" alt="">
                                 </div>
                                 <div class="rightSection col-lg-6">
-                                   
+
                                     <h1>Honoring Excellence <br>in MSME Sector! </h1>
-                                     
+
                                 </div>
-                                
+
                             </div>
                             <div class="row justify-content-center">
-                                <div class="d-flex gap-2 new-flex-col-oumn-sec justify-content-center new-flex-sm-wrap" style="gap: 8px;">
+                                <div class="d-flex gap-2 new-flex-col-oumn-sec justify-content-center new-flex-sm-wrap"
+                                    style="gap: 8px;">
                                     <div class="d-flex gap-2 new-lisrt-style justify-content-center" style="gap: 8px;">
                                         <li class="eael-countdown-item eael-countdown-item-new bg-white">
                                             <div class="w-100 mx-0"><span id="days">07</span> <br> Days</div>
@@ -6260,35 +6607,38 @@
                                     </div>
                                 </div>
                             </div>
-<style>
-    .nomination-bbtn-section{
-        background-color: #ff1204;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-    .new-lisrt-style li{
-        list-style: none !important;
-    }
-    .eael-countdown-item-new {
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    color:#000;
-}
-.eael-countdown-item {
-        width: 120px !important;
-    }
-</style>
+                            <style>
+                                .nomination-bbtn-section {
+                                    background-color: #ff1204;
+                                    color: #fff;
+                                    border: none;
+                                    padding: 10px 20px;
+                                    font-size: 16px;
+                                    cursor: pointer;
+                                    border-radius: 5px;
+                                }
+
+                                .new-lisrt-style li {
+                                    list-style: none !important;
+                                }
+
+                                .eael-countdown-item-new {
+                                    padding: 20px;
+                                    border-radius: 10px;
+                                    text-align: center;
+                                    color: #000;
+                                }
+
+                                .eael-countdown-item {
+                                    width: 120px !important;
+                                }
+                            </style>
                             <div class="row justify-content-center mt-4">
-                                
+
                                 <div class="text-center">
-                                    <button class="cta-button"  style="background-color: #ff1204; color: #fff;">
+                                    <button class="cta-button" style="background-color: #ff1204; color: #fff;">
                                         Nomination Open Now
-                                      </button>
+                                    </button>
                                 </div>
                             </div>
                             <!-- <div class="row">
@@ -6375,47 +6725,70 @@
             </style>
 
 
-<section id="section-about" class="pure-html is-section">
-    <div class="hide1">
-        <div class="overview">
-            <div class="page-center">
-                <div class="sec-title active">
-                    <h2>MSME AWARD</h2>
-                </div>
-                <div class="content-wrap">
-                    <div class="left-sec">
-                        <div class="desc">
-                            <p>MSME Manthan 2024 is not just an event—it’s a nationwide movement to empower, uplift, and enable India’s Micro, Small, and Medium Enterprises (MSMEs) to reach their full potential. Organized by the Chamber of Indian MSME, this premier platform brings together visionary entrepreneurs, financial institutions, government bodies, and industry leaders to address real-world challenges and develop sustainable, growth-driven solutions.</p>
-                            <p>Now in its latest edition, MSME Manthan has evolved into a dynamic hub of innovation, networking, and thought leadership. The event focuses on key drivers of MSME transformation—access to finance, cash-flow based lending, collateral-free loans, delayed payment recovery, digital adoption, and policy-level interventions. It also presents valuable insights for startups, helping them navigate the complexities of business growth and funding.</p>
-                            <p>With guidance from a renowned advisory board and insights from a distinguished jury of industry veterans, MSME Manthan 2024 offers high-impact sessions, interactive workshops, expert panels, and one-on-one consultations designed to accelerate MSME success.</p>
-                            <p>Our goal is clear: to build a thriving ecosystem where MSMEs don’t just sustain, but lead innovation and economic growth. Through strategic connections, expert mentorship, and actionable knowledge, MSME Manthan equips businesses to overcome market volatility, regulatory changes, and digital disruptions.
-                            </p>
-                            <p>Be a part of India’s most impactful MSME event—and join us in shaping a stronger, smarter future for small businesses across the country.</p>
+            <section id="section-about" class="pure-html is-section">
+                <div class="hide1">
+                    <div class="overview">
+                        <div class="page-center">
+                            <div class="sec-title active">
+                                <h2>MSME AWARD</h2>
+                            </div>
+                            <div class="content-wrap">
+                                <div class="left-sec">
+                                    <div class="desc">
+                                        <p>MSME Manthan 2024 is not just an event—it’s a nationwide movement to empower,
+                                            uplift, and enable India’s Micro, Small, and Medium Enterprises (MSMEs) to
+                                            reach their full potential. Organized by the Chamber of Indian MSME, this
+                                            premier platform brings together visionary entrepreneurs, financial
+                                            institutions, government bodies, and industry leaders to address real-world
+                                            challenges and develop sustainable, growth-driven solutions.</p>
+                                        <p>Now in its latest edition, MSME Manthan has evolved into a dynamic hub of
+                                            innovation, networking, and thought leadership. The event focuses on key
+                                            drivers of MSME transformation—access to finance, cash-flow based lending,
+                                            collateral-free loans, delayed payment recovery, digital adoption, and
+                                            policy-level interventions. It also presents valuable insights for startups,
+                                            helping them navigate the complexities of business growth and funding.</p>
+                                        <p>With guidance from a renowned advisory board and insights from a
+                                            distinguished jury of industry veterans, MSME Manthan 2024 offers
+                                            high-impact sessions, interactive workshops, expert panels, and one-on-one
+                                            consultations designed to accelerate MSME success.</p>
+                                        <p>Our goal is clear: to build a thriving ecosystem where MSMEs don’t just
+                                            sustain, but lead innovation and economic growth. Through strategic
+                                            connections, expert mentorship, and actionable knowledge, MSME Manthan
+                                            equips businesses to overcome market volatility, regulatory changes, and
+                                            digital disruptions.
+                                        </p>
+                                        <p>Be a part of India’s most impactful MSME event—and join us in shaping a
+                                            stronger, smarter future for small businesses across the country.</p>
+                                    </div>
+                                </div>
+                                <div class="right-sec">
+                                    <div class="embeded-video"><iframe width="560" height="315"
+                                            src="https://www.youtube.com/embed/6tU2Bfedv0M?si=gp55gATXKQ8TZp3n"
+                                            title="YouTube video player" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="right-sec">
-                        <div class="embeded-video"><iframe width="560" height="315" src="https://www.youtube.com/embed/6tU2Bfedv0M?si=gp55gATXKQ8TZp3n" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
 
 
-</section>
-<style>
-    :root {
-        --background-image-slider-about: url('https://cdn-microsites.indianexpress.com/image-404');
-        --background-image-slider-mobile-about: url('https://cdn-microsites.indianexpress.com/image-404');
-    }
+            </section>
+            <style>
+                :root {
+                    --background-image-slider-about: url('https://cdn-microsites.indianexpress.com/image-404');
+                    --background-image-slider-mobile-about: url('https://cdn-microsites.indianexpress.com/image-404');
+                }
 
-    #section-about {
-        background-image: var(--background-image-slider-about);
-        background-size: cover;
-        background-position-y: bottom;
-    }
-</style>
+                #section-about {
+                    background-image: var(--background-image-slider-about);
+                    background-size: cover;
+                    background-position-y: bottom;
+                }
+            </style>
 
 
             <section id="section-objective" class="  pure-html is-section   ">
@@ -6426,23 +6799,34 @@
                                 <h2>Objective</h2>
                             </div>
                             <div class="description">
-                                <p>The MSME Manthan Awards aim to celebrate, recognize, and empower outstanding Micro, Small, and Medium Enterprises (MSMEs) and visionary entrepreneurs who are driving innovation, creating jobs, and contributing to India’s economic growth.</p>
-                                    
-                                    <p> The awards go beyond recognition—they are designed to inspire and spotlight the resilience, ingenuity, and impact of MSMEs that have overcome challenges, adopted transformational practices, and set new benchmarks in business excellence.</p>
-                                    
-                                    <p>  By honoring trailblazers across diverse sectors, the MSME Manthan Awards strive to: </p>
-                                    
-                                        <p>  Encourage best practices in business innovation, financial discipline, and sustainability</p>
-                                    
-                                            <p>   Promote access to finance, digital adoption, and inclusive growth </p>
-                                    
-                                                <p>   Highlight inspiring stories of MSMEs making a difference in local and global markets</p>
-                                    
-                                                    <p>   Strengthen the MSME ecosystem by fostering collaboration between entrepreneurs, investors, and policymakers </p>
-                                    
-                                                        <p>  Position award winners as role models for emerging and aspiring MSME entrepreneurs </p>
-                                    
-                                                            <p>   The objective is not just to reward success, but to create a ripple effect of motivation and knowledge-sharing that fuels the rise of India’s next generation of MSME leaders.</p>
+                                <p>The MSME Manthan Awards aim to celebrate, recognize, and empower outstanding Micro,
+                                    Small, and Medium Enterprises (MSMEs) and visionary entrepreneurs who are driving
+                                    innovation, creating jobs, and contributing to India’s economic growth.</p>
+
+                                <p> The awards go beyond recognition—they are designed to inspire and spotlight the
+                                    resilience, ingenuity, and impact of MSMEs that have overcome challenges, adopted
+                                    transformational practices, and set new benchmarks in business excellence.</p>
+
+                                <p> By honoring trailblazers across diverse sectors, the MSME Manthan Awards strive to:
+                                </p>
+
+                                <p> Encourage best practices in business innovation, financial discipline, and
+                                    sustainability</p>
+
+                                <p> Promote access to finance, digital adoption, and inclusive growth </p>
+
+                                <p> Highlight inspiring stories of MSMEs making a difference in local and global markets
+                                </p>
+
+                                <p> Strengthen the MSME ecosystem by fostering collaboration between entrepreneurs,
+                                    investors, and policymakers </p>
+
+                                <p> Position award winners as role models for emerging and aspiring MSME entrepreneurs
+                                </p>
+
+                                <p> The objective is not just to reward success, but to create a ripple effect of
+                                    motivation and knowledge-sharing that fuels the rise of India’s next generation of
+                                    MSME leaders.</p>
                             </div>
                             <div class="item-wrapper hide">
                                 <div class="item"><img src="zzzasset/img/910eab16a60cad601b78.png" alt="" />
@@ -6476,65 +6860,67 @@
             </style>
 
 
-<section id="section-award-categories" class="pure-html is-section">
-    <div class="hide1">
-        <div class="award-categories">
-            <div class="page-center">
-                <div class="sec-title active">
-                    <h2>Award Categories</h2>
-                </div>
-                <div class="item-wrapper">
-                    <div class="top-section">
-                        <div class="item">
-                            <div class="img-wrap">
-                                <img class="normal-img" src="zzzasset/img/trophy (2).png" alt="">
-                               
-                                     <img class="hover-img" src="zzzasset/img/trophy (3).png" alt=""></div>
-                            <h4> Best MSME  <br>of the Year</h4>
-                        </div>
-                        <div class="item">
-                            <div class="img-wrap"><img class="normal-img"
-                                    src="zzzasset/img/successful.png" alt=""> <img class="hover-img"
-                                    src="zzzasset/img/teacher.png" alt=""></div>
-                            <h4>Women Entrepreneur  <br>of the Year</h4>
-                        </div>
-                        <div class="item">
-                            <div class="img-wrap"><img class="normal-img"
-                                    src="zzzasset/img/rocket.png" alt=""> <img class="hover-img"
-                                    src="zzzasset/img/rocket (1).png" alt=""></div>
-                            <h4> Startup Excellence <br>Award</h4>
-                        </div>
-                        <div class="item">
-                            <div class="img-wrap"><img class="normal-img"
-                                src="zzzasset/img/idea.png" alt=""> <img class="hover-img"
-                                src="zzzasset/img/idea (1).png" alt=""></div>
-                            <h4>Best Innovative  <br>MSME Awards</h4>
-                        </div>
-                        <div class="item">
-                            <div class="img-wrap"><img class="normal-img"
-                                    src="zzzasset/img/digital-transformation (3).png" alt=""> <img class="hover-img"
-                                    src="zzzasset/img/digital-transformation (1).png" alt=""></div>
-                            <h4>Digital Transformation <br> Award</h4>
-                        </div>
-                        <div class="item">
-                            <div class="img-wrap"><img class="normal-img"
-                                    src="zzzasset/894a80f501b327eec39e.png" alt=""> <img class="hover-img"
-                                    src="zzzasset/fabf32ee810c1021fa61.png" alt=""></div>
-                            <h4>Financial Inclusion <br> Award</h4>
-                        </div>
-                        <div class="item">
-                            <div class="img-wrap"><img class="normal-img"
-                                    src="zzzasset/3b5f4a5dd9f57630131f.png" alt=""> <img class="hover-img"
-                                    src="zzzasset/96e6b77449addd244dcf.png" alt=""></div>
-                            <h4>Innovation in <br>Manufacturing</h4>
-                        </div>
-                        <div class="item">
-                            <div class="img-wrap"><img class="normal-img"
-                                    src="./assets/35f3ac15ff653df1b3f3.png" alt=""> <img class="hover-img"
-                                    src="./assets/f3c5f51e6153ef4ae709.png" alt=""></div>
-                            <h4>Best Service<br>Based MSME</h4>
-                        </div>
-                        <!-- <div class="item">
+            <section id="section-award-categories" class="pure-html is-section">
+                <div class="hide1">
+                    <div class="award-categories">
+                        <div class="page-center">
+                            <div class="sec-title active">
+                                <h2>Award Categories</h2>
+                            </div>
+                            <div class="item-wrapper">
+                                <div class="top-section">
+                                    <div class="item">
+                                        <div class="img-wrap">
+                                            <img class="normal-img" src="zzzasset/img/trophy (2).png" alt="">
+
+                                            <img class="hover-img" src="zzzasset/img/trophy (3).png" alt="">
+                                        </div>
+                                        <h4> Best MSME <br>of the Year</h4>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img-wrap"><img class="normal-img" src="zzzasset/img/successful.png"
+                                                alt=""> <img class="hover-img" src="zzzasset/img/teacher.png" alt="">
+                                        </div>
+                                        <h4>Women Entrepreneur <br>of the Year</h4>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img-wrap"><img class="normal-img" src="zzzasset/img/rocket.png"
+                                                alt=""> <img class="hover-img" src="zzzasset/img/rocket (1).png" alt="">
+                                        </div>
+                                        <h4> Startup Excellence <br>Award</h4>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img-wrap"><img class="normal-img" src="zzzasset/img/idea.png"
+                                                alt=""> <img class="hover-img" src="zzzasset/img/idea (1).png" alt="">
+                                        </div>
+                                        <h4>Best Innovative <br>MSME Awards</h4>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img-wrap"><img class="normal-img"
+                                                src="zzzasset/img/digital-transformation (3).png" alt=""> <img
+                                                class="hover-img" src="zzzasset/img/digital-transformation (1).png"
+                                                alt=""></div>
+                                        <h4>Digital Transformation <br> Award</h4>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img-wrap"><img class="normal-img"
+                                                src="zzzasset/894a80f501b327eec39e.png" alt=""> <img class="hover-img"
+                                                src="zzzasset/fabf32ee810c1021fa61.png" alt=""></div>
+                                        <h4>Financial Inclusion <br> Award</h4>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img-wrap"><img class="normal-img"
+                                                src="zzzasset/3b5f4a5dd9f57630131f.png" alt=""> <img class="hover-img"
+                                                src="zzzasset/96e6b77449addd244dcf.png" alt=""></div>
+                                        <h4>Innovation in <br>Manufacturing</h4>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img-wrap"><img class="normal-img"
+                                                src="./assets/35f3ac15ff653df1b3f3.png" alt=""> <img class="hover-img"
+                                                src="./assets/f3c5f51e6153ef4ae709.png" alt=""></div>
+                                        <h4>Best Service<br>Based MSME</h4>
+                                    </div>
+                                    <!-- <div class="item">
                             <div class="img-wrap"><img class="normal-img"
                                     src="./assets/97e6a7afd6e1ba7123b0.png" alt=""> <img class="hover-img"
                                     src="./assets/fa87f44f6b7de4fe7cc9.png" alt=""></div>
@@ -6557,9 +6943,9 @@
                                     src="./assets/51a2da09df9525956462.png" alt=""> <img class="hover-img"
                                     src="./assets/10d6e6b57bb12f886661.png" alt=""></div>
                             <h4>Lifetime <br>Achievement</h4> -->
-                        </div>
-                    </div>
-                    <!-- <div class="bottom-section hide">
+                                </div>
+                            </div>
+                            <!-- <div class="bottom-section hide">
                         <div class="inner-title">
                             <h2>Jury Awards</h2>
                         </div>
@@ -6580,23 +6966,23 @@
                             </div>
                         </div>
                     </div> -->
-                </div>
-                <div class="row justify-content-center mt-4">
-                   
+                        </div>
+                        <div class="row justify-content-center mt-4">
 
-                    <div class="text-center">
-                        <button class="cta-button"  style="background-color: #ff1204; color: #fff;">
-                            View All Categories
-                          </button>
+
+                            <div class="text-center">
+                                <button class="cta-button" style="background-color: #ff1204; color: #fff;">
+                                    View All Categories
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-   
 
 
 
-</section>
+
+            </section>
             <style>
                 :root {
                     --background-image-slider-award-categories: url('https://cdn-microsites.indianexpress.com/image-404');
@@ -6634,9 +7020,8 @@
                                     <div class="img-wrap">
                                         <!-- <img src="zzzasset/img/aef218e544a895f6adbd.png"
                                             alt="" /> -->
-                                            <img src="zzzasset/img/aef218e544a895f6adbd.png"
-                                            alt="" />
-                                        </div>
+                                        <img src="zzzasset/img/aef218e544a895f6adbd.png" alt="" />
+                                    </div>
                                     <h4>AWARDS</h4>
                                 </div>
                             </div>
@@ -6644,304 +7029,360 @@
                                 <div id="appendFirst" class="append-box">
                                     <p>Entrepreneurs are nominated by subcommittee members, after which they undergo a
                                         comprehensive evaluation based on predetermined standards.</p>
-                                    <div class="cross-img"><img src="zzzasset/img/5f99dbae10e1148e940c.png"
-                                            alt="" /></div>
+                                    <div class="cross-img"><img src="zzzasset/img/5f99dbae10e1148e940c.png" alt="" />
+                                    </div>
                                 </div>
                                 <div id="appendSecond" class="append-box">
                                     <p>The subcommittee will proceed to select entrepreneurs who meet the criteria for
                                         inclusion on a shortlist for further consideration. Following this, the team
                                         will submit its shortlisted recommendations to the grand jury, along with
                                         detailed reports and justifications for each nominee.</p>
-                                    <div class="cross-img"><img src="zzzasset/img/5f99dbae10e1148e940c.png"
-                                            alt="" /></div>
+                                    <div class="cross-img"><img src="zzzasset/img/5f99dbae10e1148e940c.png" alt="" />
+                                    </div>
                                 </div>
                                 <div id="appendThird" class="append-box">
                                     <p>Grand jury members conduct independent reviews and evaluations of each nominee
                                         and select winners under each category.</p>
-                                    <div class="cross-img"><img src="zzzasset/img/5f99dbae10e1148e940c.png"
-                                            alt="" /></div>
+                                    <div class="cross-img"><img src="zzzasset/img/5f99dbae10e1148e940c.png" alt="" />
+                                    </div>
                                 </div>
                                 <div id="appendFour" class="append-box">
                                     <p>The award ceremony announces the winners through an award ceremony.</p>
-                                    <div class="cross-img"><img src="zzzasset/img/5f99dbae10e1148e940c.png"
-                                            alt="" /></div>
+                                    <div class="cross-img"><img src="zzzasset/img/5f99dbae10e1148e940c.png" alt="" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Button Trigger -->
-<div class="row justify-content-center mt-5">
-    <div class="text-center">
-        <button class="cta-button" data-bs-toggle="modal" data-bs-target="#eligibilityModal" style="background-color: #ff1204; color: #fff;">
-            <i class="fas fa-check-circle me-2"></i>Check Your Eligibility
-          </button>
-    </div>
-</div>
+                        <div class="row justify-content-center mt-5">
+                            <div class="text-center">
+                                <button class="cta-button" data-bs-toggle="modal" data-bs-target="#eligibilityModal"
+                                    style="background-color: #ff1204; color: #fff;">
+                                    <i class="fas fa-check-circle me-2"></i>Check Your Eligibility
+                                </button>
+                            </div>
+                        </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="eligibilityModal" tabindex="-1" aria-labelledby="eligibilityModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="eligibilityModalLabel">
-            <i class="fas fa-clipboard-check me-2"></i>Check Your Eligibility
-          </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="progress-container">
-            <div class="form-progress" style="width: 0%"></div>
-          </div>
-          
-          <form id="eligibilityForm">
-            <!-- Basic Information -->
-            <div class="form-section">
-              <h6 class="section-header">
-                <span class="icon"><i class="fas fa-user"></i></span>
-                Basic Information
-              </h6>
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label class="form-label">Full Name</label>
-                  <input type="text" class="form-control" id="fullName" required>
-                  <div class="error-feedback">Please enter your full name</div>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Company Name</label>
-                  <input type="text" class="form-control" id="companyName" required>
-                  <div class="error-feedback">Please enter your company name</div>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Designation</label>
-                  <input type="text" class="form-control" id="designation" required>
-                  <div class="error-feedback">Please enter your designation</div>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Email Address</label>
-                  <input type="email" class="form-control" id="email" required>
-                  <div class="error-feedback">Please enter a valid email address</div>
-                </div>
-                <div class="col-12">
-                  <label class="form-label">Phone Number</label>
-                  <div class="input-group">
-                    <span class="input-group-text">+91</span>
-                    <input type="tel" class="form-control" id="phone" required pattern="[0-9]{10}">
-                  </div>
-                  <div class="error-feedback">Please enter a valid 10-digit phone number</div>
-                </div>
-              </div>
-            </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="eligibilityModal" tabindex="-1"
+                            aria-labelledby="eligibilityModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="eligibilityModalLabel">
+                                            <i class="fas fa-clipboard-check me-2"></i>Check Your Eligibility
+                                        </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="progress-container">
+                                            <div class="form-progress" style="width: 0%"></div>
+                                        </div>
 
-            <!-- Business Information -->
-            <div class="form-section">
-              <h6 class="section-header">
-                <span class="icon"><i class="fas fa-building"></i></span>
-                Business Information
-              </h6>
-              <div class="mb-4">
-                <label class="form-label d-block">Business Type</label>
-                <div class="row g-2">
-                  <div class="col-md-6">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="businessType" id="typeMicro" value="Micro" required>
-                      <label class="form-check-label" for="typeMicro">Micro Enterprise</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="businessType" id="typeSmall" value="Small">
-                      <label class="form-check-label" for="typeSmall">Small Enterprise</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="businessType" id="typeMedium" value="Medium">
-                      <label class="form-check-label" for="typeMedium">Medium Enterprise</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="businessType" id="typeStartup" value="Startup">
-                      <label class="form-check-label" for="typeStartup">Startup (Registered with DPIIT)</label>
-                    </div>
-                  </div>
-                  <div class="col-12 mt-2">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="businessType" id="typeOther" value="Other">
-                      <label class="form-check-label" for="typeOther">Other</label>
-                    </div>
-                    <input type="text" class="form-control mt-2" id="otherBusinessType" placeholder="Please specify" style="display: none;">
-                  </div>
-                </div>
-                <div class="error-feedback">Please select your business type</div>
-              </div>
+                                        <form id="eligibilityForm">
+                                            <!-- Basic Information -->
+                                            <div class="form-section">
+                                                <h6 class="section-header">
+                                                    <span class="icon"><i class="fas fa-user"></i></span>
+                                                    Basic Information
+                                                </h6>
+                                                <div class="row g-3">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Full Name</label>
+                                                        <input type="text" class="form-control" id="fullName" required>
+                                                        <div class="error-feedback">Please enter your full name</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Company Name</label>
+                                                        <input type="text" class="form-control" id="companyName"
+                                                            required>
+                                                        <div class="error-feedback">Please enter your company name</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Designation</label>
+                                                        <input type="text" class="form-control" id="designation"
+                                                            required>
+                                                        <div class="error-feedback">Please enter your designation</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Email Address</label>
+                                                        <input type="email" class="form-control" id="email" required>
+                                                        <div class="error-feedback">Please enter a valid email address
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <label class="form-label">Phone Number</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-text">+91</span>
+                                                            <input type="tel" class="form-control" id="phone" required
+                                                                pattern="[0-9]{10}">
+                                                        </div>
+                                                        <div class="error-feedback">Please enter a valid 10-digit phone
+                                                            number</div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label class="form-label">Years in Operation</label>
-                  <select class="form-select" id="yearsInOperation" required>
-                    <option selected disabled value="">Choose...</option>
-                    <option>Less than 1 year</option>
-                    <option>1–3 years</option>
-                    <option>3–5 years</option>
-                    <option>5+ years</option>
-                  </select>
-                  <div class="error-feedback">Please select years in operation</div>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Annual Turnover (FY 2023-24)</label>
-                  <select class="form-select" id="annualTurnover" required>
-                    <option selected disabled value="">Choose...</option>
-                    <option>Below ₹50 Lakhs</option>
-                    <option>₹50 Lakhs – ₹5 Crores</option>
-                    <option>₹5 Crores – ₹75 Crores</option>
-                    <option>₹75 Crores – ₹250 Crores</option>
-                  </select>
-                  <div class="error-feedback">Please select annual turnover</div>
-                </div>
-                <div class="col-12">
-                  <label class="form-label">Are you registered under Udyam / MSME / Startup India?</label>
-                  <div class="d-flex">
-                    <div class="form-check me-4">
-                      <input class="form-check-input" type="radio" name="registered" id="registeredYes" value="Yes" required>
-                      <label class="form-check-label" for="registeredYes">Yes</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="registered" id="registeredNo" value="No">
-                      <label class="form-check-label" for="registeredNo">No</label>
-                    </div>
-                  </div>
-                  <div class="error-feedback">Please select an option</div>
-                </div>
-              </div>
-            </div>
+                                            <!-- Business Information -->
+                                            <div class="form-section">
+                                                <h6 class="section-header">
+                                                    <span class="icon"><i class="fas fa-building"></i></span>
+                                                    Business Information
+                                                </h6>
+                                                <div class="mb-4">
+                                                    <label class="form-label d-block">Business Type</label>
+                                                    <div class="row g-2">
+                                                        <div class="col-md-6">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio"
+                                                                    name="businessType" id="typeMicro" value="Micro"
+                                                                    required>
+                                                                <label class="form-check-label" for="typeMicro">Micro
+                                                                    Enterprise</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio"
+                                                                    name="businessType" id="typeSmall" value="Small">
+                                                                <label class="form-check-label" for="typeSmall">Small
+                                                                    Enterprise</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio"
+                                                                    name="businessType" id="typeMedium" value="Medium">
+                                                                <label class="form-check-label" for="typeMedium">Medium
+                                                                    Enterprise</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio"
+                                                                    name="businessType" id="typeStartup"
+                                                                    value="Startup">
+                                                                <label class="form-check-label"
+                                                                    for="typeStartup">Startup (Registered with
+                                                                    DPIIT)</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 mt-2">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio"
+                                                                    name="businessType" id="typeOther" value="Other">
+                                                                <label class="form-check-label"
+                                                                    for="typeOther">Other</label>
+                                                            </div>
+                                                            <input type="text" class="form-control mt-2"
+                                                                id="otherBusinessType" placeholder="Please specify"
+                                                                style="display: none;">
+                                                        </div>
+                                                    </div>
+                                                    <div class="error-feedback">Please select your business type</div>
+                                                </div>
 
-            <!-- Location -->
-            <div class="form-section">
-              <h6 class="section-header">
-                <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
-                Location
-              </h6>
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label class="form-label">State</label>
-                  <select class="form-select" id="state" required>
-                    <option selected disabled value="">Choose...</option>
-                    <option>Andhra Pradesh</option>
-                    <option>Arunachal Pradesh</option>
-                    <option>Assam</option>
-                    <option>Bihar</option>
-                    <option>Chhattisgarh</option>
-                    <option>Goa</option>
-                    <option>Gujarat</option>
-                    <option>Haryana</option>
-                    <option>Himachal Pradesh</option>
-                    <option>Jharkhand</option>
-                    <option>Karnataka</option>
-                    <option>Kerala</option>
-                    <option>Madhya Pradesh</option>
-                    <option>Maharashtra</option>
-                    <option>Manipur</option>
-                    <option>Meghalaya</option>
-                    <option>Mizoram</option>
-                    <option>Nagaland</option>
-                    <option>Odisha</option>
-                    <option>Punjab</option>
-                    <option>Rajasthan</option>
-                    <option>Sikkim</option>
-                    <option>Tamil Nadu</option>
-                    <option>Telangana</option>
-                    <option>Tripura</option>
-                    <option>Uttar Pradesh</option>
-                    <option>Uttarakhand</option>
-                    <option>West Bengal</option>
-                    <option>Delhi</option>
-                  </select>
-                  <div class="error-feedback">Please select your state</div>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">City / District</label>
-                  <input type="text" class="form-control" id="city" required>
-                  <div class="error-feedback">Please enter your city or district</div>
-                </div>
-              </div>
-            </div>
+                                                <div class="row g-3">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Years in Operation</label>
+                                                        <select class="form-select" id="yearsInOperation" required>
+                                                            <option selected disabled value="">Choose...</option>
+                                                            <option>Less than 1 year</option>
+                                                            <option>1–3 years</option>
+                                                            <option>3–5 years</option>
+                                                            <option>5+ years</option>
+                                                        </select>
+                                                        <div class="error-feedback">Please select years in operation
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Annual Turnover (FY 2023-24)</label>
+                                                        <select class="form-select" id="annualTurnover" required>
+                                                            <option selected disabled value="">Choose...</option>
+                                                            <option>Below ₹50 Lakhs</option>
+                                                            <option>₹50 Lakhs – ₹5 Crores</option>
+                                                            <option>₹5 Crores – ₹75 Crores</option>
+                                                            <option>₹75 Crores – ₹250 Crores</option>
+                                                        </select>
+                                                        <div class="error-feedback">Please select annual turnover</div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <label class="form-label">Are you registered under Udyam / MSME
+                                                            / Startup India?</label>
+                                                        <div class="d-flex">
+                                                            <div class="form-check me-4">
+                                                                <input class="form-check-input" type="radio"
+                                                                    name="registered" id="registeredYes" value="Yes"
+                                                                    required>
+                                                                <label class="form-check-label"
+                                                                    for="registeredYes">Yes</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio"
+                                                                    name="registered" id="registeredNo" value="No">
+                                                                <label class="form-check-label"
+                                                                    for="registeredNo">No</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="error-feedback">Please select an option</div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-            <!-- Additional Criteria -->
-            <div class="form-section">
-              <h6 class="section-header">
-                <span class="icon"><i class="fas fa-clipboard-list"></i></span>
-                Additional Criteria
-              </h6>
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label class="form-label">Have you received any Government/Private funding?</label>
-                  <div class="d-flex">
-                    <div class="form-check me-4">
-                      <input class="form-check-input" type="radio" name="funding" id="fundingYes" value="Yes" required>
-                      <label class="form-check-label" for="fundingYes">Yes</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="funding" id="fundingNo" value="No">
-                      <label class="form-check-label" for="fundingNo">No</label>
-                    </div>
-                  </div>
-                  <div class="error-feedback">Please select an option</div>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Do you have any pending financial or legal disputes?</label>
-                  <div class="d-flex">
-                    <div class="form-check me-4">
-                      <input class="form-check-input" type="radio" name="disputes" id="disputesYes" value="Yes" required>
-                      <label class="form-check-label" for="disputesYes">Yes</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="disputes" id="disputesNo" value="No">
-                      <label class="form-check-label" for="disputesNo">No</label>
-                    </div>
-                  </div>
-                  <div class="error-feedback">Please select an option</div>
-                </div>
-              </div>
-            </div>
+                                            <!-- Location -->
+                                            <div class="form-section">
+                                                <h6 class="section-header">
+                                                    <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                                                    Location
+                                                </h6>
+                                                <div class="row g-3">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">State</label>
+                                                        <select class="form-select" id="state" required>
+                                                            <option selected disabled value="">Choose...</option>
+                                                            <option>Andhra Pradesh</option>
+                                                            <option>Arunachal Pradesh</option>
+                                                            <option>Assam</option>
+                                                            <option>Bihar</option>
+                                                            <option>Chhattisgarh</option>
+                                                            <option>Goa</option>
+                                                            <option>Gujarat</option>
+                                                            <option>Haryana</option>
+                                                            <option>Himachal Pradesh</option>
+                                                            <option>Jharkhand</option>
+                                                            <option>Karnataka</option>
+                                                            <option>Kerala</option>
+                                                            <option>Madhya Pradesh</option>
+                                                            <option>Maharashtra</option>
+                                                            <option>Manipur</option>
+                                                            <option>Meghalaya</option>
+                                                            <option>Mizoram</option>
+                                                            <option>Nagaland</option>
+                                                            <option>Odisha</option>
+                                                            <option>Punjab</option>
+                                                            <option>Rajasthan</option>
+                                                            <option>Sikkim</option>
+                                                            <option>Tamil Nadu</option>
+                                                            <option>Telangana</option>
+                                                            <option>Tripura</option>
+                                                            <option>Uttar Pradesh</option>
+                                                            <option>Uttarakhand</option>
+                                                            <option>West Bengal</option>
+                                                            <option>Delhi</option>
+                                                        </select>
+                                                        <div class="error-feedback">Please select your state</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">City / District</label>
+                                                        <input type="text" class="form-control" id="city" required>
+                                                        <div class="error-feedback">Please enter your city or district
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-            <!-- Eligibility Results Section (Hidden initially) -->
-            <div id="results" class="text-center animate-in">
-              <div id="eligibleResult" style="display: none;">
-                <i class="fas fa-check-circle result-icon result-success"></i>
-                <h4 class="mb-3">Congratulations! You are eligible.</h4>
-                <p class="mb-4">Based on the information provided, your business meets our eligibility criteria. Our team will contact you soon with next steps.</p>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Continue to Application</button>
-              </div>
-              
-              <div id="pendingResult" style="display: none;">
-                <i class="fas fa-clock result-icon result-pending"></i>
-                <h4 class="mb-3">Your application needs further review</h4>
-                <p class="mb-4">Based on the information provided, we need additional details to determine your eligibility. Our team will contact you shortly.</p>
-                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
-              </div>
-              
-              <div id="ineligibleResult" style="display: none;">
-                <i class="fas fa-times-circle result-icon result-ineligible"></i>
-                <h4 class="mb-3">Unfortunately, you are not eligible at this time</h4>
-                <p class="mb-4">Based on the information provided, your business doesn't meet our current eligibility criteria. Please review our requirements or contact us for more information.</p>
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" form="eligibilityForm" class="btn btn-submit" style="background-color: #1d0f3b; color: #fff;">
-            <i class="fas fa-check-circle me-2"></i>Check Eligibility
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+                                            <!-- Additional Criteria -->
+                                            <div class="form-section">
+                                                <h6 class="section-header">
+                                                    <span class="icon"><i class="fas fa-clipboard-list"></i></span>
+                                                    Additional Criteria
+                                                </h6>
+                                                <div class="row g-3">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Have you received any
+                                                            Government/Private funding?</label>
+                                                        <div class="d-flex">
+                                                            <div class="form-check me-4">
+                                                                <input class="form-check-input" type="radio"
+                                                                    name="funding" id="fundingYes" value="Yes" required>
+                                                                <label class="form-check-label"
+                                                                    for="fundingYes">Yes</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio"
+                                                                    name="funding" id="fundingNo" value="No">
+                                                                <label class="form-check-label"
+                                                                    for="fundingNo">No</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="error-feedback">Please select an option</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Do you have any pending financial or
+                                                            legal disputes?</label>
+                                                        <div class="d-flex">
+                                                            <div class="form-check me-4">
+                                                                <input class="form-check-input" type="radio"
+                                                                    name="disputes" id="disputesYes" value="Yes"
+                                                                    required>
+                                                                <label class="form-check-label"
+                                                                    for="disputesYes">Yes</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio"
+                                                                    name="disputes" id="disputesNo" value="No">
+                                                                <label class="form-check-label"
+                                                                    for="disputesNo">No</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="error-feedback">Please select an option</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Eligibility Results Section (Hidden initially) -->
+                                            <div id="results" class="text-center animate-in">
+                                                <div id="eligibleResult" style="display: none;">
+                                                    <i class="fas fa-check-circle result-icon result-success"></i>
+                                                    <h4 class="mb-3">Congratulations! You are eligible.</h4>
+                                                    <p class="mb-4">Based on the information provided, your business
+                                                        meets our eligibility criteria. Our team will contact you soon
+                                                        with next steps.</p>
+                                                    <button type="button" class="btn btn-primary"
+                                                        data-bs-dismiss="modal">Continue to Application</button>
+                                                </div>
+
+                                                <div id="pendingResult" style="display: none;">
+                                                    <i class="fas fa-clock result-icon result-pending"></i>
+                                                    <h4 class="mb-3">Your application needs further review</h4>
+                                                    <p class="mb-4">Based on the information provided, we need
+                                                        additional details to determine your eligibility. Our team will
+                                                        contact you shortly.</p>
+                                                    <button type="button" class="btn btn-warning"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                </div>
+
+                                                <div id="ineligibleResult" style="display: none;">
+                                                    <i class="fas fa-times-circle result-icon result-ineligible"></i>
+                                                    <h4 class="mb-3">Unfortunately, you are not eligible at this time
+                                                    </h4>
+                                                    <p class="mb-4">Based on the information provided, your business
+                                                        doesn't meet our current eligibility criteria. Please review our
+                                                        requirements or contact us for more information.</p>
+                                                    <button type="button" class="btn btn-outline-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" form="eligibilityForm" class="btn btn-submit"
+                                            style="background-color: #1d0f3b; color: #fff;">
+                                            <i class="fas fa-check-circle me-2"></i>Check Eligibility
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+                        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+                            rel="stylesheet">
+                        <script
+                            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
                     </div>
                 </div>
@@ -7068,10 +7509,10 @@
 
                         <div class="row justify-content-center my-3 pb-5">
                             <div class="text-center">
-                             
-                                <button class="cta-button"  style="background-color: #ff1204; color: #fff;">
+
+                                <button class="cta-button" style="background-color: #ff1204; color: #fff;">
                                     Meet Our Jury
-                                  </button>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -7692,26 +8133,27 @@
 
 
 
-<section id="section-contact-us" class="pure-html is-section">
-    <div class="hide1">
-        <div class="contact-us">
-            <div class="page-center">
-                <div class="sec-title active">
-                    <h2>Contact Us</h2>
+            <section id="section-contact-us" class="pure-html is-section">
+                <div class="hide1">
+                    <div class="contact-us">
+                        <div class="page-center">
+                            <div class="sec-title active">
+                                <h2>Contact Us</h2>
+                            </div>
+                            <div class="contact-detail">
+                                <h3>For General Enquiry, Call On :<a href="tel:+91 99999 02336">+91 99999 02336</a></h3>
+                            </div>
+                            <div class="contact-detail">
+                                <h3>For General Enquiry, Mail On :<a
+                                        href="mailto:info@indiansmechamber.com">info@indiansmechamber.com</a></h3>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="contact-detail">
-                    <h3>For General Enquiry, Call On :<a href="tel:+91 99999 02336">+91 99999 02336</a></h3>
-                </div>
-                <div class="contact-detail">
-                    <h3>For General Enquiry, Mail On :<a href="mailto:info@indiansmechamber.com">info@indiansmechamber.com</a></h3>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 
-</section>
+            </section>
             <style>
                 :root {
                     --background-image-slider-contact-us: url('https://cdn-microsites.indianexpress.com/image-404');
@@ -8037,6 +8479,621 @@ $(document).ready(function(e) {
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="nominationModal" tabindex="-1" aria-labelledby="nominationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="nominationModalLabel">Nomination</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container" id="new-msme-form">
+                    <!-- Form Steps Indicator -->
+                    <div class="form-step-indicator d-none d-md-flex">
+                      <div class="step-item active">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Basic Information</div>
+                      </div>
+                      <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Financial Details</div>
+                      </div>
+                      <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Business Information</div>
+                      </div>
+                      <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Additional Details</div>
+                      </div>
+                      <div class="step-item">
+                        <div class="step-number">5</div>
+                        <div class="step-title">Declaration</div>
+                      </div>
+                    </div>
+                
+                    <!-- Form Content -->
+                    <form id="msmeForm">
+                      <!-- Basic Information -->
+                      <div class="form-card" id="step1">
+                        <div class="form-card-header">
+                          <span class="icon"><i class="fas fa-building"></i></span>
+                          MSME Basic Information
+                        </div>
+                        <div class="form-card-body">
+                          <div class="row g-4">
+                            <div class="col-md-6">
+                              <label class="form-label">Name of the MSME</label>
+                              <input type="text" class="form-control" id="msmeName" required>
+                              <div class="error-feedback">Please enter the name of your MSME</div>
+                            </div>
+                            <div class="col-md-6">
+                              <label class="form-label">UDYAM Registration Number</label>
+                              <input type="text" class="form-control" id="udyamNumber" required>
+                              <div class="error-feedback">Please enter your UDYAM registration number</div>
+                            </div>
+                            <div class="col-md-12">
+                              <label class="form-label">MSME Category</label>
+                              <div class="row g-3">
+                                <div class="col-lg-6">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="msmeCategory" id="microEnterprise" value="Micro" required>
+                                    <label class="form-check-label" for="microEnterprise">Micro Enterprise</label>
+                                  </div>
+                                </div>
+                                <div class="col-lg-6">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="msmeCategory" id="smallEnterprise" value="Small">
+                                    <label class="form-check-label" for="smallEnterprise">Small Enterprise</label>
+                                  </div>
+                                </div>
+                                <div class="col-lg-6">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="msmeCategory" id="mediumEnterprise" value="Medium">
+                                    <label class="form-check-label" for="mediumEnterprise">Medium Enterprise</label>
+                                  </div>
+                                </div>
+                                <div class="col-lg-6">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="msmeCategory" id="otherCategory" value="Other">
+                                    <label class="form-check-label" for="otherCategory">Other</label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="error-feedback">Please select your MSME category</div>
+                            </div>
+                          </div>
+                
+                          <div class="form-section mt-4">
+                            <div class="form-section-title">
+                              <span class="icon"><i class="fas fa-user"></i></span>
+                              Contact Information (Preferably MD and CEO)
+                            </div>
+                            <div class="row g-3">
+                              <div class="col-md-6">
+                                <label class="form-label">Name</label>
+                                <input type="text" class="form-control" id="contactName" required>
+                                <div class="error-feedback">Please enter the contact name</div>
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Designation</label>
+                                <input type="text" class="form-control" id="contactDesignation" required>
+                                <div class="error-feedback">Please enter the designation</div>
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Mobile</label>
+                                <div class="input-group">
+                                  <span class="input-group-text">+91</span>
+                                  <input type="tel" class="form-control" id="contactMobile" required pattern="[0-9]{10}">
+                                </div>
+                                <div class="error-feedback">Please enter a valid 10-digit mobile number</div>
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="contactEmail" required>
+                                <div class="error-feedback">Please enter a valid email address</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-footer">
+                          <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary next-step">
+                              Next: Financial Details <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                
+                      <!-- Financial Details -->
+                      <div class="form-card" id="step2" style="display: none;">
+                        <div class="form-card-header">
+                          <span class="icon"><i class="fas fa-chart-line"></i></span>
+                          Financial Performance & Borrowing Details
+                        </div>
+                        <div class="form-card-body">
+                          <div class="form-section">
+                            <div class="form-section-title">
+                              <span class="icon"><i class="fas fa-money-bill-wave"></i></span>
+                              Financial Performance (Rs. in Lakhs)
+                            </div>
+                            <div class="table-responsive">
+                              <table class="form-table">
+                                <thead>
+                                  <tr>
+                                    <th style="width: 40%;">Particulars</th>
+                                    <th style="width: 30%;">As on March 31, 2024</th>
+                                    <th style="width: 30%;">As on March 31, 2025</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Total Revenue</td>
+                                    <td>
+                                      <div class="input-group">
+                                        <span class="input-group-text">₹</span>
+                                        <input type="number" class="form-control" id="revenue2024" required>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="input-group">
+                                        <span class="input-group-text">₹</span>
+                                        <input type="number" class="form-control" id="revenue2025" required>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>Out of above Export Revenue</td>
+                                    <td>
+                                      <div class="input-group">
+                                        <span class="input-group-text">₹</span>
+                                        <input type="number" class="form-control" id="exportRevenue2024">
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="input-group">
+                                        <span class="input-group-text">₹</span>
+                                        <input type="number" class="form-control" id="exportRevenue2025">
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>Total Net Worth</td>
+                                    <td>
+                                      <div class="input-group">
+                                        <span class="input-group-text">₹</span>
+                                        <input type="number" class="form-control" id="netWorth2024" required>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="input-group">
+                                        <span class="input-group-text">₹</span>
+                                        <input type="number" class="form-control" id="netWorth2025" required>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>Net Profit</td>
+                                    <td>
+                                      <div class="input-group">
+                                        <span class="input-group-text">₹</span>
+                                        <input type="number" class="form-control" id="profit2024" required>
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="input-group">
+                                        <span class="input-group-text">₹</span>
+                                        <input type="number" class="form-control" id="profit2025" required>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                
+                          <div class="form-section mt-4">
+                            <div class="form-section-title">
+                              <span class="icon"><i class="fas fa-landmark"></i></span>
+                              Details of Borrowing (Rs. in Lakhs)
+                            </div>
+                            <div id="borrowingContainer">
+                              <div class="borrowing-item mb-3 p-3 border rounded">
+                                <div class="row g-3">
+                                  <div class="col-md-4">
+                                    <label class="form-label">Name of the Bank</label>
+                                    <input type="text" class="form-control" name="bankName[]">
+                                  </div>
+                                  <div class="col-md-4">
+                                    <label class="form-label">Type of Credit Facility</label>
+                                    <input type="text" class="form-control" name="creditType[]">
+                                  </div>
+                                  <div class="col-md-3">
+                                    <label class="form-label">Amount</label>
+                                    <div class="input-group">
+                                      <span class="input-group-text">₹</span>
+                                      <input type="number" class="form-control" name="borrowingAmount[]">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-1 d-flex align-items-end">
+                                    <button type="button" class="btn btn-sm btn-outline-danger remove-borrowing" style="display: none;">
+                                      <i class="fas fa-trash"></i>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div class="text-center mt-3">
+                              <button type="button" class="btn btn-outline-primary" id="addBorrowing">
+                                <i class="fas fa-plus me-2"></i>Add Another Borrowing
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-footer">
+                          <div class="d-flex justify-content-between">
+                            <button type="button" class="btn btn-outline-primary prev-step">
+                              <i class="fas fa-arrow-left me-2"></i>Back
+                            </button>
+                            <button type="button" class="btn btn-primary next-step">
+                              Next: Business Information <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                
+                      <!-- Business Information -->
+                      <div class="form-card" id="step3" style="display: none;">
+                        <div class="form-card-header">
+                          <span class="icon"><i class="fas fa-briefcase"></i></span>
+                          Business Information
+                        </div>
+                        <div class="form-card-body">
+                          <div class="form-section">
+                            <div class="form-section-title">
+                              <span class="icon"><i class="fas fa-info-circle"></i></span>
+                              Business Details
+                            </div>
+                            <div class="mb-4">
+                              <label class="form-label">Briefly explain the Business of the company</label>
+                              <textarea class="form-control" rows="5" id="businessDescription" required></textarea>
+                              <div class="error-feedback">Please provide a brief explanation of your business</div>
+                            </div>
+                            
+                            <div class="row g-4">
+                              <div class="col-md-6">
+                                <label class="form-label">Total Number of Employees on the payroll</label>
+                                <input type="number" class="form-control" id="totalEmployees" required min="0">
+                                <div class="error-feedback">Please enter the total number of employees</div>
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Total Number of Women Employees</label>
+                                <input type="number" class="form-control" id="womenEmployees" required min="0">
+                                <div class="error-feedback">Please enter the number of women employees</div>
+                              </div>
+                            </div>
+                            
+                            <div class="row g-4 mt-2">
+                              <div class="col-md-6">
+                                <label class="form-label">Do you have ZED Certification?</label>
+                                <div class="d-flex">
+                                  <div class="form-check me-4">
+                                    <input class="form-check-input" type="radio" name="zedCertification" id="zedYes" value="Yes" required>
+                                    <label class="form-check-label" for="zedYes">Yes</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="zedCertification" id="zedNo" value="No">
+                                    <label class="form-check-label" for="zedNo">No</label>
+                                  </div>
+                                </div>
+                                <div class="error-feedback">Please select an option</div>
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Did you avail any Government Schemes / Subsidy available for MSMEs?</label>
+                                <div class="d-flex">
+                                  <div class="form-check me-4">
+                                    <input class="form-check-input" type="radio" name="govtScheme" id="schemeYes" value="Yes" required>
+                                    <label class="form-check-label" for="schemeYes">Yes</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="govtScheme" id="schemeNo" value="No">
+                                    <label class="form-check-label" for="schemeNo">No</label>
+                                  </div>
+                                </div>
+                                <div class="error-feedback">Please select an option</div>
+                              </div>
+                            </div>
+                          </div>
+                
+                          <div class="form-section mt-4">
+                            <div class="form-section-title">
+                              <span class="icon"><i class="fas fa-award"></i></span>
+                              Awards & Recognition
+                            </div>
+                            <div class="mb-4">
+                              <label class="form-label">Details of the Awards conferred on you in recognition of your extraordinary performance under MSME sector</label>
+                              <textarea class="form-control" rows="4" id="awardsDetails"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-footer">
+                          <div class="d-flex justify-content-between">
+                            <button type="button" class="btn btn-outline-primary prev-step">
+                              <i class="fas fa-arrow-left me-2"></i>Back
+                            </button>
+                            <button type="button" class="btn btn-primary next-step">
+                              Next: Additional Details <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                
+                      <!-- Additional Details -->
+                      <div class="form-card" id="step4" style="display: none;">
+                        <div class="form-card-header">
+                          <span class="icon"><i class="fas fa-plus-circle"></i></span>
+                          Additional Details
+                        </div>
+                        <div class="form-card-body">
+                          <div class="form-section">
+                            <div class="form-section-title">
+                              <span class="icon"><i class="fas fa-lightbulb"></i></span>
+                              Additional Contributions & Innovations
+                            </div>
+                            <div class="mb-4">
+                              <label class="form-label">Highlight any other notable achievements, innovations, or unique contributions that the MSME has made to its industry or community (Max. 300 words)</label>
+                              <textarea class="form-control" rows="6" id="additionalContributions" maxlength="3000"></textarea>
+                              <div class="text-end mt-2 text-muted">
+                                <small id="wordCount">0 words</small>
+                              </div>
+                            </div>
+                          </div>
+                
+                          <div class="form-section mt-4">
+                            <div class="form-section-title">
+                              <span class="icon"><i class="fas fa-chart-bar"></i></span>
+                              Stock Information (If Applicable)
+                            </div>
+                            <div class="row g-3">
+                              <div class="col-md-6">
+                                <label class="form-label">Name of the Stock Exchange</label>
+                                <input type="text" class="form-control" id="stockExchange">
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Current Stock Price</label>
+                                <div class="input-group">
+                                  <span class="input-group-text">₹</span>
+                                  <input type="number" class="form-control" id="stockPrice" step="0.01">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                
+                          <div class="form-section mt-4">
+                            <div class="form-section-title">
+                              <span class="icon"><i class="fas fa-star"></i></span>
+                              External Credit Rating & Additional Information
+                            </div>
+                            <div class="row g-3">
+                              <div class="col-md-12">
+                                <label class="form-label">External Credit Rating, if applicable</label>
+                                <input type="text" class="form-control" id="creditRating">
+                              </div>
+                              <div class="col-md-12">
+                                <label class="form-label">Any other information you would like to furnish</label>
+                                <textarea class="form-control" rows="4" id="additionalInfo"></textarea>
+                              </div>
+                            </div>
+                          </div>
+                
+                          <div class="form-section mt-4">
+                            <div class="form-section-title">
+                              <span class="icon"><i class="fas fa-receipt"></i></span>
+                              Processing Fee Details
+                            </div>
+                            <div class="mb-3">
+                              <label class="form-label">Details of processing fees paid, as per concept note</label>
+                              <input type="text" class="form-control" id="processingFee" required>
+                              <div class="error-feedback">Please provide details of processing fees paid</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-footer">
+                          <div class="d-flex justify-content-between">
+                            <button type="button" class="btn btn-outline-primary prev-step">
+                              <i class="fas fa-arrow-left me-2"></i>Back
+                            </button>
+                            <button type="button" class="btn btn-primary next-step">
+                              Next: Declaration <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                
+                      <!-- Declaration -->
+                      <div class="form-card" id="step5" style="display: none;">
+                        <div class="form-card-header">
+                          <span class="icon"><i class="fas fa-file-signature"></i></span>
+                          Declaration
+                        </div>
+                        <div class="form-card-body">
+                          <div class="form-section">
+                            <div class="form-section-title">
+                              <span class="icon"><i class="fas fa-check-circle"></i></span>
+                              Declaration and Undertaking
+                            </div>
+                            <div class="declaration-box p-4 border rounded mb-4">
+                              <p>I hereby declare that:</p>
+                              <ol>
+                                <li>All the information provided in this application form is true and correct to the best of my knowledge.</li>
+                                <li>I understand that providing false information may result in rejection of the application and/or disqualification.</li>
+                                <li>I authorize the relevant authorities to verify the information provided herein.</li>
+                                <li>I confirm that I have read and understood all the terms and conditions related to this application.</li>
+                                <li>I undertake to inform the concerned authorities of any changes in the information provided.</li>
+                              </ol>
+                            </div>
+                            
+                            <div class="form-check mb-4">
+                              <input class="form-check-input" type="checkbox" id="declarationCheck" required>
+                              <label class="form-check-label" for="declarationCheck">
+                                I confirm that the information provided is accurate and I agree to the declaration above.
+                              </label>
+                              <div class="error-feedback">You must agree to the declaration to proceed</div>
+                            </div>
+                            
+                            <div class="row g-4">
+                              <div class="col-md-6">
+                                <label class="form-label">Name of the Authorized Signatory</label>
+                                <input type="text" class="form-control" id="signatoryName" required>
+                                <div class="error-feedback">Please enter the name of the authorized signatory</div>
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Designation</label>
+                                <input type="text" class="form-control" id="signatoryDesignation" required>
+                                <div class="error-feedback">Please enter the designation</div>
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Date</label>
+                                <input type="date" class="form-control" id="declarationDate" required>
+                                <div class="error-feedback">Please select a date</div>
+                              </div>
+                              <div class="col-md-6">
+                                <label class="form-label">Place</label>
+                                <input type="text" class="form-control" id="declarationPlace" required>
+                                <div class="error-feedback">Please enter the place</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-footer">
+                          <div class="d-flex justify-content-between">
+                            <button type="button" class="btn btn-outline-primary prev-step">
+                              <i class="fas fa-arrow-left me-2"></i>Back
+                            </button>
+                            <button type="submit" class="btn btn-success">
+                              <i class="fas fa-check-circle me-2"></i>Submit Application
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                </div>
+                
+                  
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    <!-- nominational-moda -->
+
+    <!-- JavaScript to make the form work -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // Form navigation
+          const nextButtons = document.querySelectorAll('.next-step');
+          const prevButtons = document.querySelectorAll('.prev-step');
+          const formSteps = document.querySelectorAll('.form-card');
+          const stepIndicators = document.querySelectorAll('.step-item');
+          let currentStep = 0;
+    
+          // Next button click event
+          nextButtons.forEach(button => {
+            button.addEventListener('click', function() {
+              // Validate current step
+              if (validateStep(currentStep)) {
+                formSteps[currentStep].style.display = 'none';
+                currentStep++;
+                formSteps[currentStep].style.display = 'block';
+                updateStepIndicator();
+              }
+            });
+          });
+    
+          // Previous button click event
+          prevButtons.forEach(button => {
+            button.addEventListener('click', function() {
+              formSteps[currentStep].style.display = 'none';
+              currentStep--;
+              formSteps[currentStep].style.display = 'block';
+              updateStepIndicator();
+            });
+          });
+    
+          // Update step indicator
+          function updateStepIndicator() {
+            stepIndicators.forEach((step, index) => {
+              if (index <= currentStep) {
+                step.classList.add('active');
+              } else {
+                step.classList.remove('active');
+              }
+            });
+          }
+    
+          // Validate step
+          function validateStep(stepIndex) {
+            const currentFormCard = formSteps[stepIndex];
+            const requiredFields = currentFormCard.querySelectorAll('[required]');
+            let isValid = true;
+    
+            requiredFields.forEach(field => {
+              if (!field.value.trim()) {
+                field.classList.add('is-invalid');
+                isValid = false;
+              } else {
+                field.classList.remove('is-invalid');
+              }
+            });
+    
+            return isValid;
+          }
+    
+          // Handle borrowing items
+          const addBorrowingBtn = document.getElementById('addBorrowing');
+          const borrowingContainer = document.getElementById('borrowingContainer');
+    
+          addBorrowingBtn.addEventListener('click', function() {
+            const newBorrowing = document.querySelector('.borrowing-item').cloneNode(true);
+            const inputs = newBorrowing.querySelectorAll('input');
+            inputs.forEach(input => input.value = '');
+            
+            const removeBtn = newBorrowing.querySelector('.remove-borrowing');
+            removeBtn.style.display = 'block';
+            removeBtn.addEventListener('click', function() {
+              borrowingContainer.removeChild(newBorrowing);
+            });
+            
+            borrowingContainer.appendChild(newBorrowing);
+          });
+    
+          // Word counter for additional contributions
+          const additionalContributions = document.getElementById('additionalContributions');
+          const wordCount = document.getElementById('wordCount');
+    
+          additionalContributions.addEventListener('input', function() {
+            const words = this.value.match(/\S+/g) || [];
+            const count = words.length;
+            wordCount.textContent = count + ' words';
+          });
+    
+          // Form submission
+          const msmeForm = document.getElementById('msmeForm');
+          msmeForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (validateStep(currentStep)) {
+              // Collect form data and submit
+              const formData = new FormData(msmeForm);
+              alert('Form submitted successfully!');
+              // Here you would normally send the form data to the server
+            }
+          });
+        });
+      </script>
+
     <script src="zzzasset/js/owl.carousel.min.js"></script>
     <script src="zzzasset/js/slick.min.js"></script>
     <!-- <script src="../../cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script> -->
@@ -8069,13 +9126,16 @@ $(document).ready(function(e) {
                 $(this).hide();
             })
 
-            $('#body .main-header .navigation li:nth-child(6)').after('<li class="winners"><a href="nomination.html">Nomination</a></li>');
+            $('#body .main-header .navigation li:nth-child(6)').after(
+                '<li class="winners"><a href="#" data-bs-toggle="modal" data-bs-target="#nominationModal">Nomination</a></li>'
+            );
+
 
             $('.sticky-bottom-nav').append('<div class="scroll-btn scroll-to-target" data-target="html" style="display: block;"><span class="fa fa-angle-double-up"></span></div>')
             $('.scroll-btn.scroll-to-target').click(function () {
                 $('html, body').animate({ scrollTop: 0 }, 'slow');
             });
-            
+
             $('.logo a').append('<img src="zzzasset/img/logo-new.png" /><div>#MSME</div>');
 
             $('#body .main-header .navigation li a[data-target*=section-criteria]').attr('data-target', '#section-program');
@@ -8267,147 +9327,147 @@ $(document).ready(function(e) {
             el.parentNode.insertBefore(s, el);
         })();
     </script>
-    
-      <!-- Form Functionality -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const form = document.getElementById('eligibilityForm');
-      const typeOtherRadio = document.getElementById('typeOther');
-      const otherBusinessTypeInput = document.getElementById('otherBusinessType');
-      const progressBar = document.querySelector('.form-progress');
-      const resultsSection = document.getElementById('results');
-      const eligibleResult = document.getElementById('eligibleResult');
-      const pendingResult = document.getElementById('pendingResult');
-      const ineligibleResult = document.getElementById('ineligibleResult');
-      
-      // Show/hide the "other" business type input field
-      typeOtherRadio.addEventListener('change', function() {
-        otherBusinessTypeInput.style.display = this.checked ? 'block' : 'none';
-        if (this.checked) {
-          otherBusinessTypeInput.setAttribute('required', '');
-        } else {
-          otherBusinessTypeInput.removeAttribute('required');
-        }
-      });
-      
-      // Update progress bar when any input changes
-      const formElements = form.querySelectorAll('input, select');
-      formElements.forEach(element => {
-        element.addEventListener('change', updateProgress);
-      });
-      
-      function updateProgress() {
-        const totalFields = form.querySelectorAll('input:required, select:required').length;
-        const filledFields = Array.from(form.querySelectorAll('input:required, select:required'))
-          .filter(field => {
-            if (field.type === 'radio') {
-              const name = field.name;
-              return form.querySelector(`input[name="${name}"]:checked`) !== null;
+
+    <!-- Form Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('eligibilityForm');
+            const typeOtherRadio = document.getElementById('typeOther');
+            const otherBusinessTypeInput = document.getElementById('otherBusinessType');
+            const progressBar = document.querySelector('.form-progress');
+            const resultsSection = document.getElementById('results');
+            const eligibleResult = document.getElementById('eligibleResult');
+            const pendingResult = document.getElementById('pendingResult');
+            const ineligibleResult = document.getElementById('ineligibleResult');
+
+            // Show/hide the "other" business type input field
+            typeOtherRadio.addEventListener('change', function () {
+                otherBusinessTypeInput.style.display = this.checked ? 'block' : 'none';
+                if (this.checked) {
+                    otherBusinessTypeInput.setAttribute('required', '');
+                } else {
+                    otherBusinessTypeInput.removeAttribute('required');
+                }
+            });
+
+            // Update progress bar when any input changes
+            const formElements = form.querySelectorAll('input, select');
+            formElements.forEach(element => {
+                element.addEventListener('change', updateProgress);
+            });
+
+            function updateProgress() {
+                const totalFields = form.querySelectorAll('input:required, select:required').length;
+                const filledFields = Array.from(form.querySelectorAll('input:required, select:required'))
+                    .filter(field => {
+                        if (field.type === 'radio') {
+                            const name = field.name;
+                            return form.querySelector(`input[name="${name}"]:checked`) !== null;
+                        }
+                        return field.value.trim() !== '';
+                    }).length;
+
+                const progress = (filledFields / totalFields) * 100;
+                progressBar.style.width = `${progress}%`;
             }
-            return field.value.trim() !== '';
-          }).length;
-        
-        const progress = (filledFields / totalFields) * 100;
-        progressBar.style.width = `${progress}%`;
-      }
-      
-      // Form validation and submission
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Basic validation
-        let isValid = true;
-        const requiredFields = form.querySelectorAll('input:required, select:required');
-        
-        requiredFields.forEach(field => {
-          if (field.type === 'radio') {
-            const name = field.name;
-            const isChecked = form.querySelector(`input[name="${name}"]:checked`) !== null;
-            if (!isChecked) {
-              const errorDiv = field.closest('.col-12, .col-md-6').querySelector('.error-feedback');
-              errorDiv.style.display = 'block';
-              isValid = false;
-            }
-          } else if (field.value.trim() === '') {
-            field.classList.add('is-invalid');
-            isValid = false;
-          } else {
-            field.classList.remove('is-invalid');
-          }
+
+            // Form validation and submission
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Basic validation
+                let isValid = true;
+                const requiredFields = form.querySelectorAll('input:required, select:required');
+
+                requiredFields.forEach(field => {
+                    if (field.type === 'radio') {
+                        const name = field.name;
+                        const isChecked = form.querySelector(`input[name="${name}"]:checked`) !== null;
+                        if (!isChecked) {
+                            const errorDiv = field.closest('.col-12, .col-md-6').querySelector('.error-feedback');
+                            errorDiv.style.display = 'block';
+                            isValid = false;
+                        }
+                    } else if (field.value.trim() === '') {
+                        field.classList.add('is-invalid');
+                        isValid = false;
+                    } else {
+                        field.classList.remove('is-invalid');
+                    }
+                });
+
+                if (!isValid) {
+                    return;
+                }
+
+                // Show loading state
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Processing...';
+                submitBtn.disabled = true;
+
+                // Simulate processing (would be replaced by actual form submission)
+                setTimeout(() => {
+                    // Hide the form sections
+                    const formSections = document.querySelectorAll('.form-section');
+                    formSections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+
+                    // Show results based on form data
+                    resultsSection.style.display = 'block';
+
+                    // Determine eligibility (this is a simplified example - you would replace with actual logic)
+                    const businessType = document.querySelector('input[name="businessType"]:checked').value;
+                    const registered = document.querySelector('input[name="registered"]:checked').value;
+                    const disputes = document.querySelector('input[name="disputes"]:checked').value;
+
+                    if (disputes === 'Yes') {
+                        ineligibleResult.style.display = 'block';
+                    } else if (registered === 'Yes' && (businessType === 'Micro' || businessType === 'Small' || businessType === 'Medium' || businessType === 'Startup')) {
+                        eligibleResult.style.display = 'block';
+                    } else {
+                        pendingResult.style.display = 'block';
+                    }
+
+                    // Reset button state
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                }, 1500);
+            });
+
+            // Reset form and results when modal is closed
+            const eligibilityModal = document.getElementById('eligibilityModal');
+            eligibilityModal.addEventListener('hidden.bs.modal', function () {
+                form.reset();
+                progressBar.style.width = '0%';
+                resultsSection.style.display = 'none';
+                eligibleResult.style.display = 'none';
+                pendingResult.style.display = 'none';
+                ineligibleResult.style.display = 'none';
+
+                // Show form sections again
+                const formSections = document.querySelectorAll('.form-section');
+                formSections.forEach(section => {
+                    section.style.display = 'block';
+                });
+
+                // Hide the "other" business type input
+                otherBusinessTypeInput.style.display = 'none';
+
+                // Clear validation states
+                const invalidFields = form.querySelectorAll('.is-invalid');
+                invalidFields.forEach(field => {
+                    field.classList.remove('is-invalid');
+                });
+
+                const errorDivs = form.querySelectorAll('.error-feedback');
+                errorDivs.forEach(div => {
+                    div.style.display = 'none';
+                });
+            });
         });
-        
-        if (!isValid) {
-          return;
-        }
-        
-        // Show loading state
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalBtnText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Processing...';
-        submitBtn.disabled = true;
-        
-        // Simulate processing (would be replaced by actual form submission)
-        setTimeout(() => {
-          // Hide the form sections
-          const formSections = document.querySelectorAll('.form-section');
-          formSections.forEach(section => {
-            section.style.display = 'none';
-          });
-          
-          // Show results based on form data
-          resultsSection.style.display = 'block';
-          
-          // Determine eligibility (this is a simplified example - you would replace with actual logic)
-          const businessType = document.querySelector('input[name="businessType"]:checked').value;
-          const registered = document.querySelector('input[name="registered"]:checked').value;
-          const disputes = document.querySelector('input[name="disputes"]:checked').value;
-          
-          if (disputes === 'Yes') {
-            ineligibleResult.style.display = 'block';
-          } else if (registered === 'Yes' && (businessType === 'Micro' || businessType === 'Small' || businessType === 'Medium' || businessType === 'Startup')) {
-            eligibleResult.style.display = 'block';
-          } else {
-            pendingResult.style.display = 'block';
-          }
-          
-          // Reset button state
-          submitBtn.innerHTML = originalBtnText;
-          submitBtn.disabled = false;
-        }, 1500);
-      });
-      
-      // Reset form and results when modal is closed
-      const eligibilityModal = document.getElementById('eligibilityModal');
-      eligibilityModal.addEventListener('hidden.bs.modal', function () {
-        form.reset();
-        progressBar.style.width = '0%';
-        resultsSection.style.display = 'none';
-        eligibleResult.style.display = 'none';
-        pendingResult.style.display = 'none';
-        ineligibleResult.style.display = 'none';
-        
-        // Show form sections again
-        const formSections = document.querySelectorAll('.form-section');
-        formSections.forEach(section => {
-          section.style.display = 'block';
-        });
-        
-        // Hide the "other" business type input
-        otherBusinessTypeInput.style.display = 'none';
-        
-        // Clear validation states
-        const invalidFields = form.querySelectorAll('.is-invalid');
-        invalidFields.forEach(field => {
-          field.classList.remove('is-invalid');
-        });
-        
-        const errorDivs = form.querySelectorAll('.error-feedback');
-        errorDivs.forEach(div => {
-          div.style.display = 'none';
-        });
-      });
-    });
-  </script>
+    </script>
     <noscript>
         <img src="https://sb.scorecardresearch.com/p?c1=2&amp;c2=8738137&amp;cv=2.0&amp;cj=1" />
     </noscript>

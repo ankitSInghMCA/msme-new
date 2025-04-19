@@ -1,0 +1,961 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSME Submission Form</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Custom Styles -->
+  <style>
+    :root {
+      --primary-color: #4361ee;
+      --secondary-color: #3f37c9;
+      --success-color: #4bb543;
+      --light-bg: #f8f9fa;
+      --border-radius: 10px;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+    }
+    
+    .page-header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      padding: 60px 0;
+      color: white;
+      margin-bottom: 40px;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .page-header h1 {
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    
+    .page-header p {
+      opacity: 0.9;
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .form-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+      overflow: hidden;
+    }
+    
+    .form-card-header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 20px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .form-card-header .icon {
+      margin-right: 10px;
+      background-color: rgba(255, 255, 255, 0.2);
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    
+    .form-card-body {
+      padding: 25px;
+    }
+    
+    .form-section {
+      margin-bottom: 30px;
+    }
+    
+    .form-section:last-child {
+      margin-bottom: 0;
+    }
+    
+    .form-section-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+    }
+    
+    .form-section-title .icon {
+      margin-right: 10px;
+      background-color: rgba(67, 97, 238, 0.1);
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    
+    .form-label {
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: #555;
+    }
+    
+    .form-control, .form-select {
+      border-radius: 8px;
+      padding: 10px 15px;
+      border: 1px solid #ddd;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    
+    .form-control:focus, .form-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    }
+    
+    .form-check-input:checked {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    .form-table {
+      border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+    
+    .form-table th {
+      background-color: rgba(67, 97, 238, 0.1);
+      padding: 12px 15px;
+      font-weight: 600;
+      color: #444;
+      text-align: left;
+    }
+    
+    .form-table td {
+      padding: 12px 15px;
+      border-top: 1px solid #eee;
+    }
+    
+    .form-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    
+    .form-footer {
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-top: 1px solid #eee;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-color);
+      border: none;
+      border-radius: 8px;
+      padding: 10px 24px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+    
+    .btn-outline-primary {
+      color: var(--primary-color);
+      border-color: var(--primary-color);
+      border-radius: 8px;
+      padding: 10px 24px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .btn-outline-primary:hover {
+      background-color: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+    
+    .signature-box {
+      border: 2px dashed #ddd;
+      border-radius: 8px;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      background-color: #f9f9f9;
+      margin-bottom: 15px;
+    }
+    
+    .signature-box:hover {
+      border-color: var(--primary-color);
+      background-color: rgba(67, 97, 238, 0.05);
+    }
+    
+    .signature-box.has-signature {
+      border-style: solid;
+      background-color: white;
+    }
+    
+    .form-step-indicator {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+    
+    .step-item {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+    
+    .step-item:not(:last-child):after {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: 60%;
+      width: 80%;
+      height: 2px;
+      background-color: #ddd;
+      z-index: 1;
+    }
+    
+    .step-number {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #f0f2f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      font-weight: 600;
+      border: 2px solid #ddd;
+      color: #777;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .step-title {
+      font-weight: 500;
+      color: #777;
+    }
+    
+    .step-item.active .step-number {
+      background-color: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+    
+    .step-item.active .step-title {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    
+    .step-item.completed .step-number {
+      background-color: var(--success-color);
+      color: white;
+      border-color: var(--success-color);
+    }
+    
+    .step-item.completed:not(:last-child):after {
+      background-color: var(--success-color);
+    }
+    
+    .custom-file-upload {
+      display: inline-block;
+      padding: 10px 15px;
+      cursor: pointer;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f8f9fa;
+      transition: all 0.3s;
+    }
+    
+    .custom-file-upload:hover {
+      background-color: #e9ecef;
+    }
+    
+    .custom-file-upload i {
+      margin-right: 5px;
+    }
+    
+    .file-info {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      background-color: #f0f2f5;
+    }
+    
+    .file-info i {
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+    
+    .file-name {
+      font-weight: 500;
+      flex: 1;
+    }
+    
+    .file-remove {
+      color: #dc3545;
+      cursor: pointer;
+    }
+    
+    .error-feedback {
+      color: #dc3545;
+      font-size: 0.85rem;
+      margin-top: 5px;
+      display: none;
+    }
+    
+    .is-invalid ~ .error-feedback {
+      display: block;
+    }
+    
+    @media (max-width: 767.98px) {
+      .step-item:not(:last-child):after {
+        width: 60%;
+      }
+      
+      .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+      }
+      
+      .step-title {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Form Steps Indicator -->
+        <div class="form-step-indicator d-none d-md-flex">
+          <div class="step-item active">
+            <div class="step-number">1</div>
+            <div class="step-title">Basic Information</div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-title">Financial Details</div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-title">Business Information</div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-title">Additional Details</div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">5</div>
+            <div class="step-title">Declaration</div>
+          </div>
+        </div>
+    
+        <!-- Form Content -->
+        <form id="msmeForm">
+          <!-- Basic Information -->
+          <div class="form-card" id="step1">
+            <div class="form-card-header">
+              <span class="icon"><i class="fas fa-building"></i></span>
+              MSME Basic Information
+            </div>
+            <div class="form-card-body">
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <label class="form-label">Name of the MSME</label>
+                  <input type="text" class="form-control" id="msmeName" required>
+                  <div class="error-feedback">Please enter the name of your MSME</div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">UDYAM Registration Number</label>
+                  <input type="text" class="form-control" id="udyamNumber" required>
+                  <div class="error-feedback">Please enter your UDYAM registration number</div>
+                </div>
+                <div class="col-md-12">
+                  <label class="form-label">MSME Category</label>
+                  <div class="row g-3">
+                    <div class="col-md-3 col-6">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="msmeCategory" id="microEnterprise" value="Micro" required>
+                        <label class="form-check-label" for="microEnterprise">Micro Enterprise</label>
+                      </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="msmeCategory" id="smallEnterprise" value="Small">
+                        <label class="form-check-label" for="smallEnterprise">Small Enterprise</label>
+                      </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="msmeCategory" id="mediumEnterprise" value="Medium">
+                        <label class="form-check-label" for="mediumEnterprise">Medium Enterprise</label>
+                      </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="msmeCategory" id="otherCategory" value="Other">
+                        <label class="form-check-label" for="otherCategory">Other</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="error-feedback">Please select your MSME category</div>
+                </div>
+              </div>
+    
+              <div class="form-section mt-4">
+                <div class="form-section-title">
+                  <span class="icon"><i class="fas fa-user"></i></span>
+                  Contact Information (Preferably MD and CEO)
+                </div>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" id="contactName" required>
+                    <div class="error-feedback">Please enter the contact name</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Designation</label>
+                    <input type="text" class="form-control" id="contactDesignation" required>
+                    <div class="error-feedback">Please enter the designation</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Mobile</label>
+                    <div class="input-group">
+                      <span class="input-group-text">+91</span>
+                      <input type="tel" class="form-control" id="contactMobile" required pattern="[0-9]{10}">
+                    </div>
+                    <div class="error-feedback">Please enter a valid 10-digit mobile number</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="contactEmail" required>
+                    <div class="error-feedback">Please enter a valid email address</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-footer">
+              <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-primary next-step">
+                  Next: Financial Details <i class="fas fa-arrow-right ms-2"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Financial Details -->
+          <div class="form-card" id="step2" style="display: none;">
+            <div class="form-card-header">
+              <span class="icon"><i class="fas fa-chart-line"></i></span>
+              Financial Performance & Borrowing Details
+            </div>
+            <div class="form-card-body">
+              <div class="form-section">
+                <div class="form-section-title">
+                  <span class="icon"><i class="fas fa-money-bill-wave"></i></span>
+                  Financial Performance (Rs. in Lakhs)
+                </div>
+                <div class="table-responsive">
+                  <table class="form-table">
+                    <thead>
+                      <tr>
+                        <th style="width: 40%;">Particulars</th>
+                        <th style="width: 30%;">As on March 31, 2024</th>
+                        <th style="width: 30%;">As on March 31, 2025</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Total Revenue</td>
+                        <td>
+                          <div class="input-group">
+                            <span class="input-group-text">₹</span>
+                            <input type="number" class="form-control" id="revenue2024" required>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="input-group">
+                            <span class="input-group-text">₹</span>
+                            <input type="number" class="form-control" id="revenue2025" required>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Out of above Export Revenue</td>
+                        <td>
+                          <div class="input-group">
+                            <span class="input-group-text">₹</span>
+                            <input type="number" class="form-control" id="exportRevenue2024">
+                          </div>
+                        </td>
+                        <td>
+                          <div class="input-group">
+                            <span class="input-group-text">₹</span>
+                            <input type="number" class="form-control" id="exportRevenue2025">
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Total Net Worth</td>
+                        <td>
+                          <div class="input-group">
+                            <span class="input-group-text">₹</span>
+                            <input type="number" class="form-control" id="netWorth2024" required>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="input-group">
+                            <span class="input-group-text">₹</span>
+                            <input type="number" class="form-control" id="netWorth2025" required>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Net Profit</td>
+                        <td>
+                          <div class="input-group">
+                            <span class="input-group-text">₹</span>
+                            <input type="number" class="form-control" id="profit2024" required>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="input-group">
+                            <span class="input-group-text">₹</span>
+                            <input type="number" class="form-control" id="profit2025" required>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+    
+              <div class="form-section mt-4">
+                <div class="form-section-title">
+                  <span class="icon"><i class="fas fa-landmark"></i></span>
+                  Details of Borrowing (Rs. in Lakhs)
+                </div>
+                <div id="borrowingContainer">
+                  <div class="borrowing-item mb-3 p-3 border rounded">
+                    <div class="row g-3">
+                      <div class="col-md-4">
+                        <label class="form-label">Name of the Bank</label>
+                        <input type="text" class="form-control" name="bankName[]">
+                      </div>
+                      <div class="col-md-4">
+                        <label class="form-label">Type of Credit Facility</label>
+                        <input type="text" class="form-control" name="creditType[]">
+                      </div>
+                      <div class="col-md-3">
+                        <label class="form-label">Amount</label>
+                        <div class="input-group">
+                          <span class="input-group-text">₹</span>
+                          <input type="number" class="form-control" name="borrowingAmount[]">
+                        </div>
+                      </div>
+                      <div class="col-md-1 d-flex align-items-end">
+                        <button type="button" class="btn btn-sm btn-outline-danger remove-borrowing" style="display: none;">
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="text-center mt-3">
+                  <button type="button" class="btn btn-outline-primary" id="addBorrowing">
+                    <i class="fas fa-plus me-2"></i>Add Another Borrowing
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="form-footer">
+              <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-outline-primary prev-step">
+                  <i class="fas fa-arrow-left me-2"></i>Back
+                </button>
+                <button type="button" class="btn btn-primary next-step">
+                  Next: Business Information <i class="fas fa-arrow-right ms-2"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Business Information -->
+          <div class="form-card" id="step3" style="display: none;">
+            <div class="form-card-header">
+              <span class="icon"><i class="fas fa-briefcase"></i></span>
+              Business Information
+            </div>
+            <div class="form-card-body">
+              <div class="form-section">
+                <div class="form-section-title">
+                  <span class="icon"><i class="fas fa-info-circle"></i></span>
+                  Business Details
+                </div>
+                <div class="mb-4">
+                  <label class="form-label">Briefly explain the Business of the company</label>
+                  <textarea class="form-control" rows="5" id="businessDescription" required></textarea>
+                  <div class="error-feedback">Please provide a brief explanation of your business</div>
+                </div>
+                
+                <div class="row g-4">
+                  <div class="col-md-6">
+                    <label class="form-label">Total Number of Employees on the payroll</label>
+                    <input type="number" class="form-control" id="totalEmployees" required min="0">
+                    <div class="error-feedback">Please enter the total number of employees</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Total Number of Women Employees</label>
+                    <input type="number" class="form-control" id="womenEmployees" required min="0">
+                    <div class="error-feedback">Please enter the number of women employees</div>
+                  </div>
+                </div>
+                
+                <div class="row g-4 mt-2">
+                  <div class="col-md-6">
+                    <label class="form-label">Do you have ZED Certification?</label>
+                    <div class="d-flex">
+                      <div class="form-check me-4">
+                        <input class="form-check-input" type="radio" name="zedCertification" id="zedYes" value="Yes" required>
+                        <label class="form-check-label" for="zedYes">Yes</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="zedCertification" id="zedNo" value="No">
+                        <label class="form-check-label" for="zedNo">No</label>
+                      </div>
+                    </div>
+                    <div class="error-feedback">Please select an option</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Did you avail any Government Schemes / Subsidy available for MSMEs?</label>
+                    <div class="d-flex">
+                      <div class="form-check me-4">
+                        <input class="form-check-input" type="radio" name="govtScheme" id="schemeYes" value="Yes" required>
+                        <label class="form-check-label" for="schemeYes">Yes</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="govtScheme" id="schemeNo" value="No">
+                        <label class="form-check-label" for="schemeNo">No</label>
+                      </div>
+                    </div>
+                    <div class="error-feedback">Please select an option</div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="form-section mt-4">
+                <div class="form-section-title">
+                  <span class="icon"><i class="fas fa-award"></i></span>
+                  Awards & Recognition
+                </div>
+                <div class="mb-4">
+                  <label class="form-label">Details of the Awards conferred on you in recognition of your extraordinary performance under MSME sector</label>
+                  <textarea class="form-control" rows="4" id="awardsDetails"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="form-footer">
+              <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-outline-primary prev-step">
+                  <i class="fas fa-arrow-left me-2"></i>Back
+                </button>
+                <button type="button" class="btn btn-primary next-step">
+                  Next: Additional Details <i class="fas fa-arrow-right ms-2"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Additional Details -->
+          <div class="form-card" id="step4" style="display: none;">
+            <div class="form-card-header">
+              <span class="icon"><i class="fas fa-plus-circle"></i></span>
+              Additional Details
+            </div>
+            <div class="form-card-body">
+              <div class="form-section">
+                <div class="form-section-title">
+                  <span class="icon"><i class="fas fa-lightbulb"></i></span>
+                  Additional Contributions & Innovations
+                </div>
+                <div class="mb-4">
+                  <label class="form-label">Highlight any other notable achievements, innovations, or unique contributions that the MSME has made to its industry or community (Max. 300 words)</label>
+                  <textarea class="form-control" rows="6" id="additionalContributions" maxlength="3000"></textarea>
+                  <div class="text-end mt-2 text-muted">
+                    <small id="wordCount">0 words</small>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="form-section mt-4">
+                <div class="form-section-title">
+                  <span class="icon"><i class="fas fa-chart-bar"></i></span>
+                  Stock Information (If Applicable)
+                </div>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Name of the Stock Exchange</label>
+                    <input type="text" class="form-control" id="stockExchange">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Current Stock Price</label>
+                    <div class="input-group">
+                      <span class="input-group-text">₹</span>
+                      <input type="number" class="form-control" id="stockPrice" step="0.01">
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="form-section mt-4">
+                <div class="form-section-title">
+                  <span class="icon"><i class="fas fa-star"></i></span>
+                  External Credit Rating & Additional Information
+                </div>
+                <div class="row g-3">
+                  <div class="col-md-12">
+                    <label class="form-label">External Credit Rating, if applicable</label>
+                    <input type="text" class="form-control" id="creditRating">
+                  </div>
+                  <div class="col-md-12">
+                    <label class="form-label">Any other information you would like to furnish</label>
+                    <textarea class="form-control" rows="4" id="additionalInfo"></textarea>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="form-section mt-4">
+                <div class="form-section-title">
+                  <span class="icon"><i class="fas fa-receipt"></i></span>
+                  Processing Fee Details
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Details of processing fees paid, as per concept note</label>
+                  <input type="text" class="form-control" id="processingFee" required>
+                  <div class="error-feedback">Please provide details of processing fees paid</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-footer">
+              <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-outline-primary prev-step">
+                  <i class="fas fa-arrow-left me-2"></i>Back
+                </button>
+                <button type="button" class="btn btn-primary next-step">
+                  Next: Declaration <i class="fas fa-arrow-right ms-2"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Declaration -->
+          <div class="form-card" id="step5" style="display: none;">
+            <div class="form-card-header">
+              <span class="icon"><i class="fas fa-file-signature"></i></span>
+              Declaration
+            </div>
+            <div class="form-card-body">
+              <div class="form-section">
+                <div class="form-section-title">
+                  <span class="icon"><i class="fas fa-check-circle"></i></span>
+                  Declaration and Undertaking
+                </div>
+                <div class="declaration-box p-4 border rounded mb-4">
+                  <p>I hereby declare that:</p>
+                  <ol>
+                    <li>All the information provided in this application form is true and correct to the best of my knowledge.</li>
+                    <li>I understand that providing false information may result in rejection of the application and/or disqualification.</li>
+                    <li>I authorize the relevant authorities to verify the information provided herein.</li>
+                    <li>I confirm that I have read and understood all the terms and conditions related to this application.</li>
+                    <li>I undertake to inform the concerned authorities of any changes in the information provided.</li>
+                  </ol>
+                </div>
+                
+                <div class="form-check mb-4">
+                  <input class="form-check-input" type="checkbox" id="declarationCheck" required>
+                  <label class="form-check-label" for="declarationCheck">
+                    I confirm that the information provided is accurate and I agree to the declaration above.
+                  </label>
+                  <div class="error-feedback">You must agree to the declaration to proceed</div>
+                </div>
+                
+                <div class="row g-4">
+                  <div class="col-md-6">
+                    <label class="form-label">Name of the Authorized Signatory</label>
+                    <input type="text" class="form-control" id="signatoryName" required>
+                    <div class="error-feedback">Please enter the name of the authorized signatory</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Designation</label>
+                    <input type="text" class="form-control" id="signatoryDesignation" required>
+                    <div class="error-feedback">Please enter the designation</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Date</label>
+                    <input type="date" class="form-control" id="declarationDate" required>
+                    <div class="error-feedback">Please select a date</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Place</label>
+                    <input type="text" class="form-control" id="declarationPlace" required>
+                    <div class="error-feedback">Please enter the place</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-footer">
+              <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-outline-primary prev-step">
+                  <i class="fas fa-arrow-left me-2"></i>Back
+                </button>
+                <button type="submit" class="btn btn-success">
+                  <i class="fas fa-check-circle me-2"></i>Submit Application
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    
+      <!-- JavaScript to make the form work -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // Form navigation
+          const nextButtons = document.querySelectorAll('.next-step');
+          const prevButtons = document.querySelectorAll('.prev-step');
+          const formSteps = document.querySelectorAll('.form-card');
+          const stepIndicators = document.querySelectorAll('.step-item');
+          let currentStep = 0;
+    
+          // Next button click event
+          nextButtons.forEach(button => {
+            button.addEventListener('click', function() {
+              // Validate current step
+              if (validateStep(currentStep)) {
+                formSteps[currentStep].style.display = 'none';
+                currentStep++;
+                formSteps[currentStep].style.display = 'block';
+                updateStepIndicator();
+              }
+            });
+          });
+    
+          // Previous button click event
+          prevButtons.forEach(button => {
+            button.addEventListener('click', function() {
+              formSteps[currentStep].style.display = 'none';
+              currentStep--;
+              formSteps[currentStep].style.display = 'block';
+              updateStepIndicator();
+            });
+          });
+    
+          // Update step indicator
+          function updateStepIndicator() {
+            stepIndicators.forEach((step, index) => {
+              if (index <= currentStep) {
+                step.classList.add('active');
+              } else {
+                step.classList.remove('active');
+              }
+            });
+          }
+    
+          // Validate step
+          function validateStep(stepIndex) {
+            const currentFormCard = formSteps[stepIndex];
+            const requiredFields = currentFormCard.querySelectorAll('[required]');
+            let isValid = true;
+    
+            requiredFields.forEach(field => {
+              if (!field.value.trim()) {
+                field.classList.add('is-invalid');
+                isValid = false;
+              } else {
+                field.classList.remove('is-invalid');
+              }
+            });
+    
+            return isValid;
+          }
+    
+          // Handle borrowing items
+          const addBorrowingBtn = document.getElementById('addBorrowing');
+          const borrowingContainer = document.getElementById('borrowingContainer');
+    
+          addBorrowingBtn.addEventListener('click', function() {
+            const newBorrowing = document.querySelector('.borrowing-item').cloneNode(true);
+            const inputs = newBorrowing.querySelectorAll('input');
+            inputs.forEach(input => input.value = '');
+            
+            const removeBtn = newBorrowing.querySelector('.remove-borrowing');
+            removeBtn.style.display = 'block';
+            removeBtn.addEventListener('click', function() {
+              borrowingContainer.removeChild(newBorrowing);
+            });
+            
+            borrowingContainer.appendChild(newBorrowing);
+          });
+    
+          // Word counter for additional contributions
+          const additionalContributions = document.getElementById('additionalContributions');
+          const wordCount = document.getElementById('wordCount');
+    
+          additionalContributions.addEventListener('input', function() {
+            const words = this.value.match(/\S+/g) || [];
+            const count = words.length;
+            wordCount.textContent = count + ' words';
+          });
+    
+          // Form submission
+          const msmeForm = document.getElementById('msmeForm');
+          msmeForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (validateStep(currentStep)) {
+              // Collect form data and submit
+              const formData = new FormData(msmeForm);
+              alert('Form submitted successfully!');
+              // Here you would normally send the form data to the server
+            }
+          });
+        });
+      </script>
+</body>
+</html>
+
+  
